@@ -1,6 +1,7 @@
 package umk.mat.jakuburb.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.CacheHint;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -28,6 +29,10 @@ public class HomeController {
 
             cos.spacingProperty().set(20);
             cos.getChildren().add(label);
+
+            label.setCache(true);
+            label.setCacheShape(true);
+            label.setCacheHint(CacheHint.SPEED);
         }
     }
 }
