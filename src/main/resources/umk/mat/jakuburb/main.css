@@ -1,8 +1,52 @@
-#cos{
- -fx-background-color: #440;
+.root {
+    -fx-font-size: 16px;
+    -fx-font-family: "Segoe UI";
 }
+
+#cos{
+ -fx-background-color: #eee;
+}
+
+
 
 #profilowe{
     -fx-image: url("https://m.media-amazon.com/images/I/71nGkWDLptL._AC_UF894,1000_QL80_.jpg");
+}
+
+#menu .label {
+    -fx-text-fill: #FFCA7A;
+    -fx-cursor: hand;
+}
+
+#menu .label:hover{
+    -fx-scale-x: 1.1;
+}
+
+.zaznaczone{
+    -fx-text-fill: #F7A325 !important;
+    -fx-font-family: "Segoe UI Black";
+}
+
+#logout{
+    -fx-text-fill: #F56038 !important;
+}
+
+#logout:hover{
+    -fx-font-weight: 700;
+}
+
+#menu{
+    -fx-background-color: #0A2F35;
+}
+
+#nothingCreate{
+    -fx-font-family: "Segoe UI Black";
+    -fx-text-fill: #0A2F35;
+     -fx-cursor: hand;
+}
+
+#nothingLabel{
+    -fx-text-fill: #12492F;
+    -fx-opacity: 0.57;
 
 }
