@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="702.0" prefWidth="1063.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <center>
+
+    </center>
+    <left>
+        <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <bottom>
+                <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+                    <padding>
+                        <Insets bottom="30.0" top="30.0" />
+                    </padding>
+                    <BorderPane.margin>
+                        <Insets bottom="15.0" />
+                    </BorderPane.margin>
+                </Label>
+            </bottom>
+            <top>
+                <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                            <children>
+                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                    <children>
+                                        <Circle fill="#1f93ff00" radius="50.0" strokeType="INSIDE" strokeWidth="5.0">
+                                            <stroke>
+                                                <LinearGradient cycleMethod="REFLECT" endX="0.5833333333333333" endY="0.7159090875224634" startX="0.08712125095454126" startY="0.321969696969697">
+                                                    <stops>
+                                                        <Stop>
+                                                            <color>
+                                                                <Color red="1.0" green="0.7921568751335144" blue="0.47843137383461" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="0.006729475100942127">
+                                                            <color>
+                                                                <Color red="0.9686274528503418" green="0.6392157077789307" blue="0.14509804546833038" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="0.9973082099596233">
+                                                            <color>
+                                                                <Color red="0.9686274528503418" green="0.6392157077789307" blue="0.14509804546833038" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="1.0">
+                                                            <color>
+                                                                <Color red="1.0" green="0.7921568751335144" blue="0.47843137383461" />
+                                                            </color>
+                                                        </Stop>
+                                                    </stops>
+                                                </LinearGradient>
+                                            </stroke>
+                                        </Circle>
+                                        <Circle fx:id="profilowe" fill="DODGERBLUE" radius="35.0" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0">
+                                            <stroke>
+                                                <RadialGradient centerX="1.0" centerY="0.8446969670845671" focusAngle="-115.02" focusDistance="0.3669724770642202" radius="0.6284403757217827">
+                                                    <stops>
+                                                        <Stop>
+                                                            <color>
+                                                                <Color red="0.3263157904148102" green="0.1643664687871933" blue="0.1643664687871933" />
+                                                            </color>
+                                                        </Stop>
+                                                        <Stop offset="1.0">
+                                                            <color>
+                                                                <Color red="0.6700000166893005" green="0.08709999918937683" blue="0.08709999918937683" />
+                                                            </color>
+                                                        </Stop>
+                                                    </stops>
+                                                </RadialGradient>
+                                            </stroke>
+                                        </Circle>
+                                    </children>
+                                </StackPane>
+                                <Label text="Nekio21" />
+                            </children>
+                            <VBox.margin>
+                                <Insets top="30.0" />
+                            </VBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                            <children>
+                                <Label text="Strona główna" />
+                                <Label styleClass="zaznaczone" text="Kalendarz nauki" />
+                                <Label text="Zestawy słówek" />
+                                <Label text="Trener" />
+                                <Label text="Draw it" />
+                            </children>
+                            <padding>
+                                <Insets bottom="30.0" top="30.0" />
+                            </padding>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </VBox>
+            </top>
+        </BorderPane>
+    </left>
+    <center>
+        <VBox fx:id="cos" alignment="CENTER" minHeight="-Infinity" minWidth="0.0" prefHeight="400.0" prefWidth="471.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="TitleKalendar" alignment="CENTER" text="02 Maj 2023 - Kalendarz" textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding></Label>
+            <GridPane fx:id="grdsd" alignment="CENTER" hgap="10.0" prefHeight="229.0" prefWidth="400.0" vgap="25.0">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" maxWidth="-Infinity" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="-Infinity" minWidth="-Infinity" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                  <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="70.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Poniedziałek" textAlignment="CENTER">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Wtorek" textAlignment="CENTER" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Środa" textAlignment="CENTER" GridPane.columnIndex="2">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Czwartek" textAlignment="CENTER" GridPane.columnIndex="3">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Piątek" textAlignment="CENTER" GridPane.columnIndex="4">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Sobota" textAlignment="CENTER" GridPane.columnIndex="5">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="TOP" maxHeight="40.0" maxWidth="70" minHeight="40.0" minWidth="70" prefHeight="40.0" prefWidth="70" text="Niedziela" textAlignment="CENTER" GridPane.columnIndex="6">
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="1">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children></Pane>
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="3" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="2" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="4" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="6" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="5" />
+                  <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+            <Label fx:id="TitleKalendar1" alignment="CENTER" text="pokaz cały rok / lata" textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+        </VBox>
+    </center>
+</BorderPane>

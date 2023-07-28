@@ -7,8 +7,6 @@
  -fx-background-color: #eee;
 }
 
-
-
 #profilowe{
     -fx-image: url("https://m.media-amazon.com/images/I/71nGkWDLptL._AC_UF894,1000_QL80_.jpg");
 }
@@ -18,7 +16,7 @@
     -fx-cursor: hand;
 }
 
-#menu .label:hover{
+#menu .label:hover, #logIn:hover{
     -fx-scale-x: 1.1;
 }
 
@@ -49,4 +47,37 @@
     -fx-text-fill: #12492F;
     -fx-opacity: 0.57;
 
+}
+
+#logIn{
+    -fx-text-fill: #F7A325;
+    -fx-cursor: hand;
+    -fx-font-family: "Segoe UI Black";
+    -fx-font-size: 24px;
+}
+
+#loginHBox TextField, #loginHBox PasswordField{
+    -fx-padding: 15px 30px 15px 30px;
+    -fx-border-color: #0A2F35;
+    -fx-border-width: 4px;
+}
+
+#TitleKalendar{
+    -fx-font-family: "Segoe UI Black";
+    -fx-text-fill: #12492F;
+    -fx-font-size: 36px;
+}
+
+#grdsd .label {
+    -fx-text-fill: #12492F;
+}
+
+#grdsd {
+    -fx-background-color: #8fbc8f;
+}
+
+.kalendarzTitle {
+    -fx-border-color: #0A2F35;
+    -fx-border-width: 5px;
+    -fx-background-color: #eee;
 }

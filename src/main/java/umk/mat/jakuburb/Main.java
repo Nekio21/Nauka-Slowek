@@ -29,13 +29,13 @@ public class Main extends Application {
         loader.setClassLoader(getClass().getClassLoader());
         pane = loader.load(url);
 
-        Scene scene = new Scene(pane, 1040,570);
+        Scene scene = new Scene(pane, 1040,630);
 
 //        scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
         scene.getStylesheets().add(url2.toString());
 
         stage.setMinWidth(1040);
-        stage.setMinHeight(570);
+        stage.setMinHeight(630);
         stage.setTitle("Nauka słowek :>");
         stage.setScene(scene);
         stage.show();
