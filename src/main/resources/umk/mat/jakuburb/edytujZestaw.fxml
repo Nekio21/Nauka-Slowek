@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -11,7 +17,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="566.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.EdytujZestawController">
    <center>
 
    </center>
@@ -90,10 +96,10 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                      <children>
-                        <Label styleClass="zaznaczone" text="Strona główna" />
+                        <Label onMouseClicked="#homeMenuAction" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
-                        <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
-                        <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />
+                        <Label onMouseClicked="#zestawyMenuAction" styleClass="zaznaczone" text="Zestawy słówek" />
+                        <Label text="Trener" />
                         <Label text="Draw it" />
                      </children>
                      <padding>
@@ -112,11 +118,71 @@
       </BorderPane>
    </left>
    <center>
-      <VBox fx:id="cos" alignment="CENTER" minHeight="-Infinity" minWidth="0.0" spacing="10.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="cos" minHeight="-Infinity" minWidth="0.0" prefHeight="400.0" prefWidth="481.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="nothingLabel" text="Nie masz jeszcze żadnego zestawu" />
-            <Label fx:id="nothingCreate" text="Utwórz zestaw" />
+            <BorderPane>
+               <left>
+                  <Label fx:id="edytujZestawSave" alignment="CENTER" text="Zapisz zestaw" textAlignment="CENTER" BorderPane.alignment="CENTER">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin></Label>
+               </left>
+               <right>
+                  <Label fx:id="edytujZestaw__name" text="Nowy Zestaw" textAlignment="CENTER" BorderPane.alignment="CENTER" />
+               </right>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </BorderPane>
+            <HBox fx:id="edytujZestaw__hBox" alignment="CENTER" prefHeight="35.0" spacing="40.0">
+               <children>
+                  <TextField promptText="Słówko strona A" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                     </padding></TextField>
+                  <TextField promptText="Słówko strona B" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                     </padding></TextField>
+                  <Label text="Dodaj" />
+               </children>
+               <padding>
+                  <Insets bottom="35.0" left="20.0" right="20.0" top="35.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="edytujZestawHBoxTools" alignment="CENTER_LEFT" spacing="20.0">
+               <children>
+                  <Label minWidth="150.0" text="Ilosc słówek: 110" />
+                  <CheckBox mnemonicParsing="false" text="natychmiastowe zapisywanie" />
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
+               </padding>
+            </HBox>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <content>
+                  <TableView fx:id="table" editable="true">
+                    <columns>
+                      <TableColumn prefWidth="-1.0" text="Słowko Strona A" />
+                      <TableColumn prefWidth="-1.0" text="Słowko Strona B" />
+                        <TableColumn editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Narzędzia" />
+                    </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </content>
+            </ScrollPane>
          </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
       </VBox>
    </center>
 </BorderPane>

@@ -22,7 +22,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-public class HomeController {
+public class HomeController extends MyController{
 
     @FXML
     private Circle profilowe;
@@ -36,24 +36,17 @@ public class HomeController {
 
     @FXML
     public void kalendarzMenuAction(MouseEvent mouseEvent){
+        change("calendar.fxml", mouseEvent);
+    }
 
-        try {
-            Stage stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+    @FXML
+    public void zestawyMenuAction(MouseEvent mouseEvent){
 
-            FXMLLoader loader = new FXMLLoader();
-            URL url = new File("src/main/resources/umk/mat/jakuburb/calendar.fxml").toURI().toURL();
-            URL url2 = new File("src/main/resources/umk/mat/jakuburb/main.css").toURI().toURL();
+        change("zestawy.fxml", mouseEvent);
+    }
 
-            loader.setClassLoader(getClass().getClassLoader());
-            Pane pane = loader.load(url);
-
-            Scene scene = new Scene(pane, 1040, 630);
-            scene.getStylesheets().add(url2.toString());
-
-            stage.setScene(scene);
-            stage.show();
-        }catch (Exception e){
-            System.out.println(e);
-        }
+    @FXML
+    public void zestawyEdytujChwilowoMenuAction(MouseEvent mouseEvent){
+        change("edytujZestaw.fxml", mouseEvent);
     }
 }

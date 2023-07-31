@@ -72,12 +72,84 @@
     -fx-text-fill: #12492F;
 }
 
-#grdsd {
-    -fx-background-color: #8fbc8f;
-}
-
 .kalendarzTitle {
     -fx-border-color: #0A2F35;
     -fx-border-width: 5px;
     -fx-background-color: #eee;
 }
+
+#edytujZestawSave{
+    -fx-background-color: #0A2F35;
+    -fx-text-fill: #F56038;
+    -fx-font-weight: 700;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+}
+
+#edytujZestawSave:hover{
+    -fx-background-color: #F56038;
+    -fx-text-fill: #0A2F35;
+}
+
+#edytujZestaw__name{
+    -fx-font-size: 36px;
+    -fx-font-weight: 300;
+    -fx-text-fill: #12492F;
+    -fx-letter-spacing: 10px;
+}
+
+#edytujZestaw__hBox{
+    -fx-background-color: #0A2F35;
+}
+
+#edytujZestaw__hBox .text-field{
+    -fx-background-color: #0ff0;
+    -fx-border-color: #F7A325;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-prompt-text-fill: #FFCA7A88;
+    -fx-text-fill: #FFCA7ACC;
+}
+
+#edytujZestaw__hBox .label{
+    -fx-font-weight: 900;
+    -fx-text-fill: #F7A325;
+    -fx-cursor: hand;
+}
+
+#edytujZestaw__hBox .label:hover{
+    -fx-text-fill: #F56038;
+}
+
+#edytujZestawHBoxTools .label, #edytujZestawHBoxTools .check-box{
+    -fx-text-fill: #12492F;
+}
+
+#edytujZestawHBoxTools .check-box .box{
+    -fx-background-color: #eee;
+    -fx-border-width: 2px;
+    -fx-border-color: #12492F;
+    -fx-border-radius: 3px;
+    -fx-font-size: 12px;
+}
+
+#edytujZestawHBoxTools .check-box:selected .mark{
+    -fx-background-color: #0A2F35;
+}
+
+#table {
+      -fx-background-color: #eee;
+}
+
+#table .table-column{
+    -fx-background-color: #eee;
+    -fx-border-width:  0px 0px 5px 0px;
+    -fx-border-color: #0A2F35;
+}
+
+#table .column-header-background .label{
+     -fx-text-fill: #12492Fdd;
+     -fx-padding: 15px 0px 15px 0px;
+
+}
+
+
