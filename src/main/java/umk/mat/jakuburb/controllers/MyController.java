@@ -23,8 +23,11 @@ public abstract class MyController {
             loader.setClassLoader(getClass().getClassLoader());
             Pane pane = loader.load(url);
 
-            Scene scene = new Scene(pane, 1040, 630);
+            Scene scene = new Scene(pane, stage.getScene().getWidth(), stage.getScene().getHeight());
             scene.getStylesheets().add(url2.toString());
+
+            stage.setMinWidth(1040);
+            stage.setMinHeight(630);
 
             stage.setScene(scene);
             stage.show();

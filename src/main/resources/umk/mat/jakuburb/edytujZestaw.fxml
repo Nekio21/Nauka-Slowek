@@ -121,21 +121,28 @@
       <VBox fx:id="cos" minHeight="-Infinity" minWidth="0.0" prefHeight="400.0" prefWidth="481.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <BorderPane>
-               <left>
-                  <Label fx:id="edytujZestawSave" alignment="CENTER" text="Zapisz zestaw" textAlignment="CENTER" BorderPane.alignment="CENTER">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <BorderPane.margin>
-                        <Insets />
-                     </BorderPane.margin></Label>
-               </left>
                <right>
                   <Label fx:id="edytujZestaw__name" text="Nowy Zestaw" textAlignment="CENTER" BorderPane.alignment="CENTER" />
                </right>
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
+               <left>
+                  <HBox spacing="25.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label fx:id="edytujZestawSave" alignment="CENTER" text="Zapisz zestaw" textAlignment="CENTER">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="edytujZestawDelete" alignment="CENTER" text="Usuń zestaw" textAlignment="CENTER">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+               </left>
             </BorderPane>
             <HBox fx:id="edytujZestaw__hBox" alignment="CENTER" prefHeight="35.0" spacing="40.0">
                <children>
@@ -156,15 +163,15 @@
             <HBox fx:id="edytujZestawHBoxTools" alignment="CENTER_LEFT" spacing="20.0">
                <children>
                   <Label minWidth="150.0" text="Ilosc słówek: 110" />
-                  <CheckBox mnemonicParsing="false" text="natychmiastowe zapisywanie" />
+                  <CheckBox mnemonicParsing="false" text="Natychmiastowe zapisywanie" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
                </padding>
             </HBox>
-            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+            <ScrollPane fx:id="edytujZestaw__scroll" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <content>
-                  <TableView fx:id="table" editable="true">
+                  <TableView fx:id="table" cache="true" editable="true">
                     <columns>
                       <TableColumn prefWidth="-1.0" text="Słowko Strona A" />
                       <TableColumn prefWidth="-1.0" text="Słowko Strona B" />

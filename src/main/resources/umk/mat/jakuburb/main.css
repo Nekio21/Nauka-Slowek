@@ -78,7 +78,7 @@
     -fx-background-color: #eee;
 }
 
-#edytujZestawSave{
+#edytujZestawSave, #edytujZestawDelete{
     -fx-background-color: #0A2F35;
     -fx-text-fill: #F56038;
     -fx-font-weight: 700;
@@ -86,7 +86,7 @@
     -fx-cursor: hand;
 }
 
-#edytujZestawSave:hover{
+#edytujZestawSave:hover, #edytujZestawDelete:hover{
     -fx-background-color: #F56038;
     -fx-text-fill: #0A2F35;
 }
@@ -128,8 +128,8 @@
     -fx-background-color: #eee;
     -fx-border-width: 2px;
     -fx-border-color: #12492F;
-    -fx-border-radius: 3px;
-    -fx-font-size: 12px;
+    -fx-border-radius: 2px;
+    -fx-font-size: 8px;
 }
 
 #edytujZestawHBoxTools .check-box:selected .mark{
@@ -152,4 +152,109 @@
 
 }
 
+#table .table-cell {
+    -fx-padding: 15px 0px 15px 0px;
+    -fx-text-fill: #12492F;
+    -fx-border-width: 0px;
+    -fx-alignment: center;
+}
+
+#table .virtual-flow .scroll-bar:vertical{
+    -fx-font-size: 7px;
+}
+
+#edytujZestaw__scroll{
+    -fx-background-color: #eee;
+}
+
+#zestaw_snz{
+    -fx-background-color: #0A2F35;
+    -fx-text-fill: #F56038;
+    -fx-font-weight: 900;
+    -fx-cursor: hand;
+}
+
+#zestaw_snz:hover{
+    -fx-background-color: #F56038;
+    -fx-text-fill: #0A2F35;
+}
+
+.zestawBox{
+    -fx-border-width: 5px;
+    -fx-border-color: #0A2F35;
+    -fx-text-fill: #12492F;
+    -fx-cursor: hand;
+}
+
+.zestawBox .label{
+    -fx-text-fill: #12492F;
+}
+
+.zestawBox:hover{
+    -fx-border-color: #eee;
+    -fx-text-fill: #eee;
+    -fx-background-color: #0A2F35;
+}
+
+.zestawBox:hover .label{
+   -fx-text-fill: #F7A325;
+}
+
+.zestawBox_bold{
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
+}
+
+.scroll-bar:vertical{
+    -fx-background-color: #0A2F35ee;
+    -fx-padding: 0px 3px 0px 2px;
+    -fx-background-radius: 2px;
+}
+
+.scroll-bar:vertical .thumb{
+    -fx-background-color: #FFCA7A;
+}
+
+.scroll-bar:vertical .increment-button{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .decrement-button{
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:vertical .increment-arrow{
+    -fx-background-color: #eee;
+    -fx-shape: " ";
+}
+
+.scroll-bar:vertical .decrement-arrow{
+    -fx-background-color: #eee;
+    -fx-shape: " ";
+}
+
+#zestawy_hboTop .text-field{
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-border-color: #0A2F35;
+    -fx-prompt-text-fill: #12492F88;
+    -fx-text-fill: #12492F;
+    -fx-background-color: #eee;
+}
+
+#zestawy_hboSortuj .choice-box{
+    -fx-background-color: #0A2F35;
+
+}
+
+#zestawy_hboSortuj .choice-box .arrow {
+    -fx-background-color: #FFCA7A;
+}
+
+#zestawy_hboSortuj .choice-box .label {
+      -fx-text-fill: #FFCA7A;
+}
+
+#zestawy_hboSortuj .choice-box .context-menu {
+      -fx-background-color: #0A2F35;
+}
 

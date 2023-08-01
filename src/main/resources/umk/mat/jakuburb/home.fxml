@@ -115,7 +115,7 @@
       <VBox fx:id="cos" alignment="CENTER" minHeight="-Infinity" minWidth="0.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="nothingLabel" text="Nie masz jeszcze żadnego zestawu" />
-            <Label fx:id="nothingCreate" text="Utwórz zestaw" />
+            <Label fx:id="nothingCreate" onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Utwórz zestaw" />
          </children>
       </VBox>
    </center>

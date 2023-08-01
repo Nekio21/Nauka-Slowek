@@ -6,4 +6,5 @@ module NaukaSlowek {
 
     exports umk.mat.jakuburb;
     opens umk.mat.jakuburb.controllers;
+    opens umk.mat.jakuburb.encje;
 }
