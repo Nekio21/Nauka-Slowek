@@ -23,7 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        URL url = new File("src/main/resources/umk/mat/jakuburb/login.fxml").toURI().toURL();
+        URL url = new File("src/main/resources/umk/mat/jakuburb/home2.fxml").toURI().toURL();
         URL url2 = new File("src/main/resources/umk/mat/jakuburb/main.css").toURI().toURL();
 
         loader.setClassLoader(getClass().getClassLoader());

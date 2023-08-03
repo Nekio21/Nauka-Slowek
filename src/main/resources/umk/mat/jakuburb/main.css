@@ -16,7 +16,7 @@
     -fx-cursor: hand;
 }
 
-#menu .label:hover, #logIn:hover{
+#menu .label:hover{
     -fx-scale-x: 1.1;
 }
 
@@ -50,16 +50,48 @@
 }
 
 #logIn{
-    -fx-text-fill: #F7A325;
+    -fx-text-fill: #F56038cc;
     -fx-cursor: hand;
     -fx-font-family: "Segoe UI Black";
     -fx-font-size: 24px;
 }
 
+#logIn:hover{
+    -fx-text-fill: #F56038;
+}
+
+#tytul_login{
+    -fx-font-size: 40px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #F7A325;
+}
+
+#podtytol_login{
+    -fx-text-fill: #FFCA7A77;
+}
+
+#zajestroj_login{
+        -fx-font-family: "Segoe UI Black";
+        -fx-font-size: 18px;
+        -fx-text-fill: #F5603877;
+        -fx-cursor: hand;
+}
+
+#zajestroj_login:hover{
+    -fx-text-fill: #F56038;
+}
+
+#loginHBox{
+    -fx-background-color: #0A2F3500 !important;
+}
+
 #loginHBox TextField, #loginHBox PasswordField{
-    -fx-padding: 15px 30px 15px 30px;
-    -fx-border-color: #0A2F35;
-    -fx-border-width: 4px;
+    -fx-padding: 30px 50px 20px 40px;
+    -fx-background-color: #0A2F35;
+    -fx-text-fill: #FFCA7A;
+    -fx-prompt-text-fill: #FFCA7A55;
+    -fx-border-color: #F7A325;
+    -fx-border-width: 0px 0px 5px 0px;
 }
 
 #TitleKalendar{
@@ -167,14 +199,14 @@
     -fx-background-color: #eee;
 }
 
-#zestaw_snz{
+#zestaw_snz, #wroc_wynik{
     -fx-background-color: #0A2F35;
     -fx-text-fill: #F56038;
     -fx-font-weight: 900;
     -fx-cursor: hand;
 }
 
-#zestaw_snz:hover{
+#zestaw_snz:hover, #wroc_wynik:hover{
     -fx-background-color: #F56038;
     -fx-text-fill: #0A2F35;
 }
@@ -258,3 +290,111 @@
       -fx-background-color: #0A2F35;
 }
 
+.progress-bar .track{
+    -fx-background-color: #eee;
+    -fx-border-width: 4px;
+    -fx-border-color: #0A2F35;
+}
+
+
+.progress-bar .bar{
+    -fx-background-color: #12492F;
+}
+
+#lista_gra {
+    -fx-border-width: 3px 0px 3px 0px;
+    -fx-border-color: #0A2F35ee;
+    -fx-padding: 15px 0px 55px 0px;
+}
+
+.statystyka_title{
+    -fx-font-weight: 700;
+    -fx-text-fill: #0A2F35;
+}
+
+.statytyka_normal, .statytyka_good{
+    -fx-text-fill: #12492F;
+}
+
+.statytyka_negative{
+    -fx-text-fill: #F56038;
+}
+
+#slowko_gra{
+    -fx-font-weight: 700;
+    -fx-font-size: 18px;
+      -fx-text-fill: #0A2F35;
+}
+
+#wpiszSlowko_gra{
+    -fx-border-width: 0px;
+    -fx-border-width: 0px 0px 3px 0px;
+    -fx-border-color: #0A2F35;
+    -fx-background-color: #eee;
+    -fx-prompt-text-fill: #12492F99;
+    -fx-text-fill: #12492F;
+    -fx-font-weight: 900;
+    -fx-padding: 10px 20px 10px 20px;
+}
+
+#wpiszSlowko_gra:focused{
+    -fx-border-color: #F7A325;
+}
+
+#check_gra{
+    -fx-font-size: 24px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #12492F;
+    -fx-cursor: hand;
+}
+
+#check_gra:hover{
+      -fx-text-fill: #0A2F35;
+}
+
+
+#rezultat{
+    -fx-font-size: 72px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #0A2F35;
+}
+
+#title_trener, #gratulacje{
+    -fx-text-fill: #0A2F35;
+    -fx-font-size: 36px;
+}
+
+#spis_trener, #gratulacje_opis{
+    -fx-text-fill: #12492F;
+    -fx-font-size: 12px;
+    -fx-font-weight: 200;
+}
+
+#przycisk_trener{
+    -fx-padding: 10px 30px 10px 30px;
+    -fx-background-color: #0A2F35;
+    -fx-text-fill: #F56038;
+    -fx-font-size: 24px;
+}
+
+.slupek{
+    -fx-border-color: #F7A325;
+    -fx-border-width: 3px;
+    -fx-background-color: #FFCA7A;
+}
+
+.procent_trener{
+    -fx-font-size: 24px;
+    -fx-text-fill: #12492F;
+}
+
+.data_trener{
+    -fx-font-size: 12px;
+    -fx-text-fill: #12492F99;
+    -fx-padding: 0px 0px 40px 0px;
+}
+
+#przycisk_trener:hover{
+    -fx-background-color: #F56038;
+    -fx-text-fill: #0A2F35;
+}

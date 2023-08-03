@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.HomeController">
+   <center>
+
+   </center>
+   <left>
+      <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </bottom>
+         <top>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                     <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Circle fill="#1f93ff00" radius="50.0" strokeType="INSIDE" strokeWidth="5.0">
+                                 <stroke>
+                                    <LinearGradient cycleMethod="REFLECT" endX="0.5833333333333333" endY="0.7159090875224634" startX="0.08712125095454126" startY="0.321969696969697">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="1.0" green="0.7921568751335144" blue="0.47843137383461" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="0.006729475100942127">
+                                             <color>
+                                                <Color red="0.9686274528503418" green="0.6392157077789307" blue="0.14509804546833038" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="0.9973082099596233">
+                                             <color>
+                                                <Color red="0.9686274528503418" green="0.6392157077789307" blue="0.14509804546833038" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.7921568751335144" blue="0.47843137383461" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </stroke>
+                              </Circle>
+                              <Circle fx:id="profilowe" fill="DODGERBLUE" radius="35.0" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0">
+                                 <stroke>
+                                    <RadialGradient centerX="1.0" centerY="0.8446969660845671" focusAngle="-115.02" focusDistance="0.3669724770642202" radius="0.6284403757217827">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.3263157904148102" green="0.1643664687871933" blue="0.1643664687871933" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.6700000166893005" green="0.08709999918937683" blue="0.08709999918937683" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </stroke>
+                              </Circle>
+                           </children>
+                        </StackPane>
+                        <Label text="Nekio21" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                     <children>
+                        <Label styleClass="zaznaczone" text="Strona główna" />
+                        <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
+                        <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
+                        <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />
+                        <Label text="Draw it" />
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" top="30.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </top>
+      </BorderPane>
+   </left>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #eee;" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="1000.0" prefWidth="1000.0" />
+            <ImageView fitHeight="278.0" fitWidth="443.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/fiszka4.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="rezultat" alignment="TOP_LEFT" text="Dobrze" StackPane.alignment="TOP_LEFT">
+               <StackPane.margin>
+                  <Insets left="30.0" top="30.0" />
+               </StackPane.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </Label>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" spacing="30.0">
+               <children>
+                  <Label fx:id="slowko_gra" maxHeight="90.0" text="Krowa je trawe regularnie w popoludowy dzien be zzadnego powodu. czemu ?? nie wiem :(" wrapText="true" />
+                  <TextField fx:id="wpiszSlowko_gra" focusTraversable="false" promptText="Wpisz tutaj swoja odpowiedz :)" />
+                  <Label fx:id="check_gra" text="sprawdz" />
+               </children>
+            </VBox>
+            <ProgressBar prefHeight="70.0" prefWidth="490.0" progress="0.46" StackPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <StackPane.margin>
+                  <Insets top="400.0" />
+               </StackPane.margin>
+            </ProgressBar>
+            <VBox fx:id="lista_gra" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="150.0" spacing="20.0" StackPane.alignment="TOP_RIGHT">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecne statystyki tego słowka" textAlignment="CENTER" wrapText="true">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="22 razy robione" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="Twoja skutecznosc: 23%" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecny wynik gry" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_good" text="22 poprawne odpowiedzi" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_negative" text="23 negatywne odpowiedzi" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+               </children>
+               <StackPane.margin>
+                  <Insets right="25.0" top="20.0" />
+               </StackPane.margin>
+            </VBox>
+         </children>
+      </StackPane>
+   </center>
+</BorderPane>

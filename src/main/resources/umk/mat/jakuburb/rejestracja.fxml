@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A2F35;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox fx:id="loginHBox" alignment="CENTER" spacing="70.0" style="-fx-background-color: #12492F;">
+         <children>
+            <VBox alignment="CENTER" fillWidth="false" maxWidth="-Infinity" spacing="10.0">
+               <children>
+                  <Label fx:id="tytul_login" text="The Master program" />
+                  <Label fx:id="podtytol_login" text="Załuż konto i ciesz się nauką słówek jak nigdy" />
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField alignment="TOP_LEFT" maxWidth="300.0" promptText="Wpisz login" />
+                        <PasswordField maxWidth="300.0" promptText="Wpisz hasło" />
+                        <PasswordField maxWidth="300.0" promptText="Wpisz hasło jeszcze raz" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Circle fill="#12472ec6" radius="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <TextField maxWidth="400.0" promptText="Wpisz tutaj url do swojego zdjecia " />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Label fx:id="logIn" text="Zarejstroj sie" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <Label fx:id="zajestroj_login" text="zaloguj się" StackPane.alignment="TOP_RIGHT">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </Label>
+   </children>
+</StackPane>

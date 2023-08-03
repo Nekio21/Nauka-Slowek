@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.HomeController">
+   <center>
+
+   </center>
+   <left>
+      <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </bottom>
+         <top>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                     <children>
+                        <StackPane prefHeight="150.0" prefWidth="200.0">
+                           <children>
+                              <Circle fill="#1f93ff00" radius="50.0" strokeType="INSIDE" strokeWidth="5.0">
+                                 <stroke>
+                                    <LinearGradient cycleMethod="REFLECT" endX="0.5833333333333333" endY="0.7159090875224634" startX="0.08712125095454126" startY="0.321969696969697">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="1.0" green="0.7921568751335144" blue="0.47843137383461" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="0.006729475100942127">
+                                             <color>
+                                                <Color red="0.9686274528503418" green="0.6392157077789307" blue="0.14509804546833038" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="0.9973082099596233">
+                                             <color>
+                                                <Color red="0.9686274528503418" green="0.6392157077789307" blue="0.14509804546833038" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="1.0" green="0.7921568751335144" blue="0.47843137383461" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </LinearGradient>
+                                 </stroke>
+                              </Circle>
+                              <Circle fx:id="profilowe" fill="DODGERBLUE" radius="35.0" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="0.0">
+                                 <stroke>
+                                    <RadialGradient centerX="1.0" centerY="0.8446969660845671" focusAngle="-115.02" focusDistance="0.3669724770642202" radius="0.6284403757217827">
+                                       <stops>
+                                          <Stop>
+                                             <color>
+                                                <Color red="0.3263157904148102" green="0.1643664687871933" blue="0.1643664687871933" />
+                                             </color>
+                                          </Stop>
+                                          <Stop offset="1.0">
+                                             <color>
+                                                <Color red="0.6700000166893005" green="0.08709999918937683" blue="0.08709999918937683" />
+                                             </color>
+                                          </Stop>
+                                       </stops>
+                                    </RadialGradient>
+                                 </stroke>
+                              </Circle>
+                           </children>
+                        </StackPane>
+                        <Label text="Nekio21" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+                     <children>
+                        <Label styleClass="zaznaczone" text="Strona główna" />
+                        <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
+                        <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
+                        <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />
+                        <Label text="Draw it" />
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" top="30.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+         </top>
+      </BorderPane>
+   </left>
+   <center>
+      <VBox fx:id="cos" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="0.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="title_trener" text="Witaj Nekio21">
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="spis_trener" maxHeight="-Infinity" maxWidth="500.0" text="Twój trener przygotował dla Ciebie nowy trening dla słowek, który czas najwyższy powtórzyć :) Regularne powtarzenie słówek w odpowiednich przerwach pozwala na dłuuuugie zapamietanie nich. Dzieki Trenorowi czas działa tylko na twoja kożysc. Nie pozostaje mi nic innego jak życzyc udaj nauki :)" textAlignment="JUSTIFY" wrapText="true" />
+            <Label fx:id="przycisk_trener" text="Rozpocznij juz teraz" />
+            <Label fx:id="zestaw_trener" text="twoj progres w zestawie &quot;jedzenie&quot;" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="BOTTOM_CENTER" spacing="10.0">
+                     <children>
+                        <Label styleClass="procent_trener" text="22%" />
+                        <Pane fx:id="slopek1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="80.0" prefWidth="50.0" styleClass="slupek" />
+                        <Label alignment="CENTER" styleClass="data_trener" text="Poziom wiedzy z 20.04.2021" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" spacing="10.0">
+                     <children>
+                        <Label styleClass="procent_trener" text="45%" />
+                        <Pane fx:id="slopek2" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="50.0" styleClass="slupek" />
+                        <Label alignment="CENTER" styleClass="data_trener" text="Poziom wiedzy z 20.04.2021" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_CENTER" spacing="10.0">
+                     <children>
+                        <Label styleClass="procent_trener" text="88%" />
+                        <Pane fx:id="slopek3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="320.0" prefWidth="50.0" styleClass="slupek" />
+                        <Label alignment="CENTER" styleClass="data_trener" text="Poziom wiedzy z 20.04.2021" textAlignment="JUSTIFY" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>
