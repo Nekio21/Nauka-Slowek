@@ -370,11 +370,13 @@
     -fx-font-weight: 200;
 }
 
-#przycisk_trener{
+#przycisk_trener, #showMore_sg{
     -fx-padding: 10px 30px 10px 30px;
     -fx-background-color: #0A2F35;
     -fx-text-fill: #F56038;
     -fx-font-size: 24px;
+    -fx-font-weight: 900;
+    -fx-cursor: hand;
 }
 
 .slupek{
@@ -389,12 +391,82 @@
 }
 
 .data_trener{
-    -fx-font-size: 12px;
-    -fx-text-fill: #12492F99;
     -fx-padding: 0px 0px 40px 0px;
 }
 
-#przycisk_trener:hover{
+.data_trener2, .data_trener{
+    -fx-font-size: 12px;
+    -fx-text-fill: #12492F99;
+}
+
+#przycisk_trener:hover, #showMore_sg:hover{
     -fx-background-color: #F56038;
     -fx-text-fill: #0A2F35;
 }
+
+/*style="-fx-background-image: url(&quot;car2.png&quot;);"
+*/
+
+#panel1{
+    -fx-background-image: url("assets/tlo1.4.png");
+}
+
+#panel2{
+    -fx-background-image: url("assets/tlo2.png");
+}
+
+#wynik_sg{
+    -fx-font-size: 36px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #F56038;
+}
+
+#showMore_sg{
+    -fx-font-size: 12px;
+}
+
+#lawa_sg{
+    -fx-background-image: url("assets/tlo3.3.png");
+}
+
+#wybrane_slowko{
+      -fx-font-size: 36px;
+      -fx-font-weight: 900;
+      -fx-text-fill: #FFCA7A;
+}
+
+#save_sg{
+     -fx-font-size: 12px;
+     -fx-font-weight: 900;
+     -fx-text-fill: #F7A325;
+     -fx-cursor:hand;
+}
+
+#save_sg:hover{
+    -fx-text-fill: #F56038;
+}
+
+#title_slupki_sg{
+    -fx-font-size: 28px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #12492F;
+}
+
+.miejsca{
+    -fx-padding: 20px 80px 20px 80px;
+    -fx-background-color: #0A2F35;
+    -fx-text-fill: #F7A325;
+    -fx-font-size: 36px;
+}
+
+.miejsca:hover{
+    -fx-background-color: #F7A325;
+    -fx-text-fill: #0A2F35;
+}
+
+
+.slowka_znane_sg{
+    -fx-font-size: 24px;
+    -fx-text-fill: #12492F;
+}
+
