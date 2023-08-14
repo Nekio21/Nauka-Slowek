@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A2F35;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A2F35;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.RegisterController">
    <children>
       <VBox fx:id="loginHBox" alignment="CENTER" spacing="70.0" style="-fx-background-color: #12492F;">
          <children>
@@ -23,26 +23,26 @@
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField alignment="TOP_LEFT" maxWidth="300.0" promptText="Wpisz login" />
-                        <PasswordField maxWidth="300.0" promptText="Wpisz hasło" />
-                        <PasswordField maxWidth="300.0" promptText="Wpisz hasło jeszcze raz" />
+                        <TextField fx:id="loginTF" alignment="TOP_LEFT" maxWidth="300.0" promptText="Wpisz login" />
+                        <PasswordField fx:id="hasloTF" maxWidth="300.0" promptText="Wpisz hasło" />
+                        <PasswordField fx:id="hasloTwiceTF" maxWidth="300.0" promptText="Wpisz hasło jeszcze raz" />
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fill="#12472ec6" radius="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <TextField maxWidth="400.0" promptText="Wpisz tutaj url do swojego zdjecia " />
+                        <Circle fx:id="kolko" fill="#12472ec6" radius="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label onMouseClicked="#chooseImage" text="Wybierz obraz" />
                      </children>
-                  </VBox>
+                  </StackPane>
                </children>
             </HBox>
-            <Label fx:id="logIn" text="Zarejstroj sie" />
+            <Label fx:id="logIn" onMouseClicked="#registerMethod" text="Zarejstroj sie" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Label fx:id="zajestroj_login" text="zaloguj się" StackPane.alignment="TOP_RIGHT">
+      <Label fx:id="zajestroj_login" onMouseClicked="#returnToLogin" text="zaloguj się" StackPane.alignment="TOP_RIGHT">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>

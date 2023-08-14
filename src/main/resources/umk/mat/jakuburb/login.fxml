@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A2F35;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A2F35;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.LoginController">
    <children>
       <VBox fx:id="loginHBox" alignment="CENTER" spacing="40.0">
          <children>
@@ -23,17 +22,17 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                <children>
-                  <TextField alignment="TOP_LEFT" maxWidth="300.0" promptText="Wpisz login" />
-                  <PasswordField maxWidth="300.0" promptText="Wpisz hasło" />
+                  <TextField fx:id="loginTF" alignment="TOP_LEFT" maxWidth="300.0" promptText="Wpisz login" />
+                  <PasswordField fx:id="hasloTF" maxWidth="300.0" promptText="Wpisz hasło" />
                </children>
             </VBox>
-            <Label fx:id="logIn" text="Zaloguj się" />
+            <Label fx:id="logIn" onMouseClicked="#loginMethod" text="Zaloguj się" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Label fx:id="zajestroj_login" text="Zarejstruj sie" StackPane.alignment="TOP_RIGHT">
+      <Label fx:id="zajestroj_login" onMouseClicked="#registerMethod" text="Zarejstruj sie" StackPane.alignment="TOP_RIGHT">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>

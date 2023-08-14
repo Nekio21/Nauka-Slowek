@@ -457,6 +457,7 @@
     -fx-background-color: #0A2F35;
     -fx-text-fill: #F7A325;
     -fx-font-size: 36px;
+    -fx-cursor: hand;
 }
 
 .miejsca:hover{

@@ -11,6 +11,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import umk.mat.jakuburb.database.MyDatabase;
 
 import java.io.File;
 import java.net.URL;
@@ -19,11 +20,32 @@ import java.util.List;
 public class Main extends Application {
 
     private Parent pane;
+    private MyDatabase database;
 
     @Override
     public void start(Stage stage) throws Exception {
+        try {
+            startUI(stage);
+
+            database = MyDatabase.createDatabase();
+        }catch (Exception e){
+            System.out.println("blad: " + e);
+        }
+    }
+
+    @Override
+    public void stop(){
+        System.out.println("zegnam :(");
+        database.stopDatabase();
+    }
+
+    public static void main(String[] args) {
+        Application.launch(args);
+    }
+
+    public void startUI(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader();
-        URL url = new File("src/main/resources/umk/mat/jakuburb/home2.fxml").toURI().toURL();
+        URL url = new File("src/main/resources/umk/mat/jakuburb/login.fxml").toURI().toURL();
         URL url2 = new File("src/main/resources/umk/mat/jakuburb/main.css").toURI().toURL();
 
         loader.setClassLoader(getClass().getClassLoader());
@@ -39,9 +61,5 @@ public class Main extends Application {
         stage.setTitle("Nauka słowek :>");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        Application.launch(args);
     }
 }
