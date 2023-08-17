@@ -1,7 +1,9 @@
 package umk.mat.jakuburb.encje;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Users")
@@ -21,6 +23,14 @@ public class User {
 
     @Column(name = "image", columnDefinition="org.hibernate.type.BinaryType")
     private byte[] image;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "UserZestawy",
+            joinColumns = @JoinColumn(name = "idowner"),
+            inverseJoinColumns = @JoinColumn(name = "idzes")
+    )
+    private List<ZestawySlowek> zestawySlowek = new ArrayList<>();
 
 
     public User(){
@@ -63,5 +73,13 @@ public class User {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public List<ZestawySlowek> getZestawySlowek() {
+        return zestawySlowek;
+    }
+
+    public void setZestawySlowek(List<ZestawySlowek> zestawySlowek) {
+        this.zestawySlowek = zestawySlowek;
     }
 }

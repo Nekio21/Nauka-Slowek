@@ -1,7 +1,9 @@
 package umk.mat.jakuburb.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
@@ -13,42 +15,26 @@ public class EdytujZestawController extends MyController{
     @FXML
     private TableView<Slowko> table;
 
+    @FXML
+    private TextField slowkoStronaB;
+
+    @FXML
+    private TextField slowkoStronaA;
+
 
     @FXML
     public void initialize(){
         table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("stronaA"));
         table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("stronaB"));
         table.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("cos"));
+        table.setEditable(true);
+    }
 
 
-        table.getItems().add(new Slowko("Pies","Dog", "cos i cos"));
-        table.getItems().add(new Slowko("Kot","Cat", "cos i cos"));
-        table.getItems().add(new Slowko("Mysz","Mouse", "cos i cos"));
-        table.getItems().add(new Slowko("Komputer","Computer", "cos i cos"));
-        table.getItems().add(new Slowko("Rower","Bike", "cos i cos"));
-        table.getItems().add(new Slowko("Cebula","Anion", "cos i cos"));
-
-        table.getItems().add(new Slowko("Pies","Dog", "cos i cos"));
-        table.getItems().add(new Slowko("Kot","Cat", "cos i cos"));
-        table.getItems().add(new Slowko("Mysz","Mouse", "cos i cos"));
-        table.getItems().add(new Slowko("Komputer","Computer", "cos i cos"));
-        table.getItems().add(new Slowko("Rower","Bike", "cos i cos"));
-        table.getItems().add(new Slowko("Cebula","Anion", "cos i cos"));
-
-        table.getItems().add(new Slowko("Pies","Dog", "cos i cos"));
-        table.getItems().add(new Slowko("Kot","Cat", "cos i cos"));
-        table.getItems().add(new Slowko("Mysz","Mouse", "cos i cos"));
-        table.getItems().add(new Slowko("Komputer","Computer", "cos i cos"));
-        table.getItems().add(new Slowko("Rower","Bike", "cos i cos"));
-        table.getItems().add(new Slowko("Cebula","Anion", "cos i cos"));
-
-        table.getItems().add(new Slowko("Pies","Dog", "cos i cos"));
-        table.getItems().add(new Slowko("Kot","Cat", "cos i cos"));
-        table.getItems().add(new Slowko("Mysz","Mouse", "cos i cos"));
-        table.getItems().add(new Slowko("Komputer","Computer", "cos i cos"));
-        table.getItems().add(new Slowko("Rower","Bike", "cos i cos"));
-        table.getItems().add(new Slowko("Cebula","Anion", "cos i cos"));
-
+    //TODO: ENTER TEZ MA DZIALAC :>
+    @FXML
+    public void addMethod(MouseEvent mouseEvent){
+        table.getItems().add(new Slowko(slowkoStronaA.getText(),slowkoStronaB.getText(), "cos i cos"));
     }
 
     @FXML

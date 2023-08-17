@@ -58,10 +58,9 @@ public class RegisterController extends MyController implements MyDatabaseInterf
     public void registerMethod(MouseEvent mouseEvent){
         myDatabase = MyDatabase.createDatabase();
 
-
-
-
-        myDatabase.makeSession(this);
+        if(!(loginTF.getText().equals("") || hasloTF.getText().equals(""))) {
+            myDatabase.makeSession(this);
+        }
     }
 
     @FXML
@@ -93,11 +92,14 @@ public class RegisterController extends MyController implements MyDatabaseInterf
     @Override
     public Object inside(Session session) {
         user = new User();
+
         user.setLogin(loginTF.getText());
         user.setPassword(hasloTF.getText());
+
         try {
             byteImage = Files.readAllBytes(image.toPath());
-        } catch (IOException e) {
+        } catch (Exception e){
+            byteImage = null;
             System.out.println("blad: " + e);
         }
 

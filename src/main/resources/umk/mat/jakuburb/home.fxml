@@ -82,7 +82,7 @@
                               </Circle>
                            </children>
                         </StackPane>
-                        <Label text="Nekio21" />
+                        <Label fx:id="nickLabel" text="Nekio21" />
                      </children>
                      <VBox.margin>
                         <Insets top="30.0" />

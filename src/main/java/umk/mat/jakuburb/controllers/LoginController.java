@@ -22,6 +22,8 @@ import umk.mat.jakuburb.database.MyDatabase;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 
+import java.util.Map;
+
 public class LoginController extends MyController implements MyDatabaseInterface {
 
     @FXML
@@ -32,7 +34,8 @@ public class LoginController extends MyController implements MyDatabaseInterface
 
     private MyDatabase myDatabase;
 
-    private final String queryString = "SELECT COUNT(*) FROM User u WHERE u.login = :ll AND u.password = :lp";
+    private final String queryString = "FROM User u WHERE u.login = :ll AND u.password = :lp";
+    public static String PW_KEY_ID = "Super tajne ID";
 
     private MouseEvent ms;
 
@@ -66,21 +69,30 @@ public class LoginController extends MyController implements MyDatabaseInterface
     @Override
     public Object inside(Session session) {
 
-        Query<Long> q = session.createQuery(queryString, Long.class);
+        Query<User> q = session.createQuery(queryString, User.class);
+        User user;
 
         q.setParameter("ll", loginTF.getText());
         q.setParameter("lp", hasloTF.getText());
 
-        long wynik = q.getSingleResult();
+        long wynik = q.getResultStream().count();
 
-        return wynik;
+        if(wynik == 1){
+            user = q.getResultStream().toList().get(0);
+        }else{
+            user = null;
+        }
+
+        return user;
     }
 
     @Override
     public void after(Object wynik) {
-        long result = (long)wynik;
+        DataSender dataSender = DataSender.initDataSender();
+        User result = (User)wynik;
 
-        if(result == 1){
+        if(result != null){
+            dataSender.add(result, PW_KEY_ID);
             change("home.fxml", ms);
         }else{
             Popup popup = new Popup();

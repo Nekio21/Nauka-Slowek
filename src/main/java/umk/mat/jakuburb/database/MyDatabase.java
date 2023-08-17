@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import umk.mat.jakuburb.encje.User;
+import umk.mat.jakuburb.encje.ZestawySlowek;
 
 import java.io.File;
 import java.net.URL;
@@ -42,6 +43,7 @@ public class MyDatabase implements Runnable{
             System.out.println(e);
         }
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(ZestawySlowek.class);
 
         sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();

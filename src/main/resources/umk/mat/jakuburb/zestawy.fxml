@@ -15,7 +15,6 @@
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.ZestawyController">
    <center>
@@ -147,186 +146,22 @@
             </HBox>
             <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="268.0" prefWidth="360.0" style="-fx-background-color: #eee;" VBox.vgrow="ALWAYS">
                <content>
-                  <FlowPane alignment="TOP_CENTER" hgap="20.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eee;" vgap="20.0">
+                  <StackPane style="-fx-background-color: #222;">
                      <children>
-                        <Label fx:id="zestaw_snz" alignment="CENTER" text="Stworz nowy zestaw" wrapText="true">
-                           <padding>
-                              <Insets bottom="100.0" left="22.0" right="22.0" top="100.0" />
-                           </padding>
-                        </Label>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
+                        <FlowPane fx:id="flowPane" alignment="CENTER" columnHalignment="CENTER" hgap="20.0" nodeOrientation="LEFT_TO_RIGHT" prefWrapLength="0.0" style="-fx-background-color: #eee;" vgap="20.0" StackPane.alignment="CENTER">
                            <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
+                              <Label fx:id="zestaw_snz" alignment="CENTER" onMouseClicked="#newMethod" text="Stworz nowy zestaw" wrapText="true">
+                                 <padding>
+                                    <Insets bottom="100.0" left="22.0" right="22.0" top="100.0" />
+                                 </padding>
                               </Label>
-                              <Label text="38% zrozumienia" />
                            </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
                            <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                              <Insets bottom="20.0" top="20.0" />
                            </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" spacing="50.0" styleClass="zestawBox">
-                           <padding>
-                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                           </padding>
-                           <children>
-                              <Label alignment="CENTER" maxHeight="100.0" maxWidth="150.0" minHeight="100.0" minWidth="150.0" prefHeight="100.0" prefWidth="150.0" styleClass="zestawBox_bold" text="jakies kolejne słowka wwwweee" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </Label>
-                              <Label text="38% zrozumienia" />
-                           </children>
-                        </VBox>
+                        </FlowPane>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" top="20.0" />
-                     </padding></FlowPane>
+                  </StackPane>
                </content>
             </ScrollPane>
          </children>

@@ -124,10 +124,13 @@
 }
 
 #edytujZestaw__name{
-    -fx-font-size: 36px;
+    -fx-font-size: 24px;
     -fx-font-weight: 300;
     -fx-text-fill: #12492F;
     -fx-letter-spacing: 10px;
+    -fx-border-width: 0px;
+    -fx-background-color: #eee;
+    -fx-padding: 0px;
 }
 
 #edytujZestaw__hBox{

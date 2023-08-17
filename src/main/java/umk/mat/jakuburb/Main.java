@@ -11,10 +11,12 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
+import umk.mat.jakuburb.controllers.MyController;
 import umk.mat.jakuburb.database.MyDatabase;
 
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main extends Application {
@@ -49,6 +51,7 @@ public class Main extends Application {
         URL url2 = new File("src/main/resources/umk/mat/jakuburb/main.css").toURI().toURL();
 
         loader.setClassLoader(getClass().getClassLoader());
+
         pane = loader.load(url);
 
         Scene scene = new Scene(pane, 1040,630);
