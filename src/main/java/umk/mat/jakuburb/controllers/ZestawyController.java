@@ -1,5 +1,6 @@
 package umk.mat.jakuburb.controllers;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -14,14 +15,17 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import org.hibernate.Session;
+import org.hibernate.event.spi.EventType;
 import org.hibernate.query.Query;
 import umk.mat.jakuburb.database.MyDatabase;
+import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 import umk.mat.jakuburb.encje.ZestawySlowek;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public class ZestawyController extends MyController implements MyDatabaseInterface {
 
@@ -32,6 +36,7 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     private FlowPane flowPane;
 
     public static String ZESTAW_KEY_ID = "Super ID zestaw ;/";
+
     private MyDatabase myDatabase;
     private DataSender dataSender;
 
@@ -60,11 +65,9 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
 
     @FXML
     public void newMethod(MouseEvent mouseEvent){
-//        myDatabase = MyDatabase.createDatabase();
-//        dataSender = DataSender.initDataSender();
-//
-//        myDatabase.makeSession(this);
-            change("edytujZestaw.fxml", mouseEvent);
+        dataSender.add(null,ZESTAW_KEY_ID);
+
+        change("edytujZestaw.fxml", mouseEvent);
     }
 
     @FXML
@@ -84,12 +87,11 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     }
 
     @Override
-    public Object inside(Session session) {
+    public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
         User user = (User)dataSender.get(LoginController.PW_KEY_ID);
 
         Query<ZestawySlowek> zestawySlowekQuery = session.createQuery("SELECT u.zestawySlowek From User u where u.id = :id", ZestawySlowek.class);
         zestawySlowekQuery.setParameter("id", user.getId());
-
 
         List<ZestawySlowek> list = zestawySlowekQuery.getResultList();
 
@@ -97,7 +99,7 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     }
 
     @Override
-    public void after(Object wynik) {
+    public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
         User user = (User)dataSender.get(LoginController.PW_KEY_ID);
         List<ZestawySlowek> list = (List<ZestawySlowek>) wynik;
 
@@ -127,10 +129,25 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
             title.setMinSize(150, 100);
 
             Label down = new Label();
-            down.setText(z.getPunkty().toString());
+
+            if(z.getPunkty() == null){
+                down.setText("0");
+            }else{
+                down.setText(z.getPunkty().toString());
+            }
+
 
             vbox.getChildren().add(title);
             vbox.getChildren().add(down);
+
+            vbox.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    dataSender.add(z,ZESTAW_KEY_ID);
+
+                    change("edytujZestaw.fxml", mouseEvent);
+                }
+            });
 
             flowPane.getChildren().add(vbox);
         }

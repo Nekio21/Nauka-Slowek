@@ -19,6 +19,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import umk.mat.jakuburb.database.MyDatabase;
+import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 
@@ -91,14 +92,14 @@ public class HomeController extends MyController implements MyDatabaseInterface 
     }
 
     @Override
-    public Object inside(Session session) {
+    public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
         
 
         return null;
     }
 
     @Override
-    public void after(Object wynik) {
+    public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
 
     }
 }

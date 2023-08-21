@@ -19,6 +19,7 @@ import javafx.util.Duration;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import umk.mat.jakuburb.database.MyDatabase;
+import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 
@@ -67,7 +68,7 @@ public class LoginController extends MyController implements MyDatabaseInterface
     }
 
     @Override
-    public Object inside(Session session) {
+    public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
 
         Query<User> q = session.createQuery(queryString, User.class);
         User user;
@@ -87,7 +88,7 @@ public class LoginController extends MyController implements MyDatabaseInterface
     }
 
     @Override
-    public void after(Object wynik) {
+    public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
         DataSender dataSender = DataSender.initDataSender();
         User result = (User)wynik;
 

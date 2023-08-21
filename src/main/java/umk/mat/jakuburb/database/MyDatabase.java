@@ -3,6 +3,7 @@ package umk.mat.jakuburb.database;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import umk.mat.jakuburb.encje.Slowka;
 import umk.mat.jakuburb.encje.User;
 import umk.mat.jakuburb.encje.ZestawySlowek;
 
@@ -15,7 +16,6 @@ public class MyDatabase implements Runnable{
 
     private Configuration configuration;
     private SessionFactory sessionFactory;
-
 
 
     //TODO: Ogarnij to, ze czy czasami sie poptawnie zamyka bazadanych, booo wykres w pgAdmin ???
@@ -44,6 +44,7 @@ public class MyDatabase implements Runnable{
         }
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(ZestawySlowek.class);
+        configuration.addAnnotatedClass(Slowka.class);
 
         sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();
@@ -51,15 +52,30 @@ public class MyDatabase implements Runnable{
         session.getTransaction().commit();
     }
 
-    public void makeSession(MyDatabaseInterface mdi){
+    public void makeSession(MyDatabaseInterface myDatabaseInterface){
         Session session = sessionFactory.getCurrentSession();
+        MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
+        myDatabaseBox.setStany(StanyDatabase.NULL);
+
         session.beginTransaction();
 
-        Object wynik = mdi.inside(session);
+        Object wynik = myDatabaseInterface.inside(myDatabaseBox, session);
 
         session.getTransaction().commit();
 
-        mdi.after(wynik);
+        myDatabaseInterface.after(myDatabaseBox, wynik);
+    }
+
+    public void makeSession(MyDatabaseBox myDatabaseBox, MyDatabaseInterface myDatabaseInterface){
+        Session session = sessionFactory.getCurrentSession();
+
+        session.beginTransaction();
+
+        Object wynik = myDatabaseInterface.inside(myDatabaseBox, session);
+
+        session.getTransaction().commit();
+
+        myDatabaseInterface.after(myDatabaseBox, wynik);
     }
 
     public void stopDatabase(){

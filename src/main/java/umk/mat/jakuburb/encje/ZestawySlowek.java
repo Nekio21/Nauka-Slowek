@@ -28,8 +28,11 @@ public class ZestawySlowek {
     @Column(name = "datastworzenia")
     private LocalDateTime dataStworzenia;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "zestawySlowek")
+    @ManyToMany(mappedBy = "zestawySlowek")
     private List<User> uzytkownicy = new ArrayList<>();
+
+    @OneToMany(mappedBy = "zestawySlowek", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    private List<Slowka> slowka = new ArrayList<>();
 
     public ZestawySlowek(){
 
@@ -88,6 +91,14 @@ public class ZestawySlowek {
 
     public void setUzytkownicy(List<User> uzytkownicy) {
         this.uzytkownicy = uzytkownicy;
+    }
+
+    public List<Slowka> getSlowka() {
+        return slowka;
+    }
+
+    public void setSlowka(List<Slowka> slowka) {
+        this.slowka = slowka;
     }
 
     @Override

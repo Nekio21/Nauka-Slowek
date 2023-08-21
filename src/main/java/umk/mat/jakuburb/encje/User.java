@@ -24,7 +24,7 @@ public class User {
     @Column(name = "image", columnDefinition="org.hibernate.type.BinaryType")
     private byte[] image;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(
             name = "UserZestawy",
             joinColumns = @JoinColumn(name = "idowner"),

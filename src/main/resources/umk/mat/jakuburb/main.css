@@ -110,7 +110,7 @@
     -fx-background-color: #eee;
 }
 
-#edytujZestawSave, #edytujZestawDelete{
+#edytujZestawSave, #edytujZestawDelete, #edytujZestawPlay{
     -fx-background-color: #0A2F35;
     -fx-text-fill: #F56038;
     -fx-font-weight: 700;
@@ -118,7 +118,7 @@
     -fx-cursor: hand;
 }
 
-#edytujZestawSave:hover, #edytujZestawDelete:hover{
+#edytujZestawSave:hover, #edytujZestawDelete:hover, #edytujZestawPlay:hover{
     -fx-background-color: #F56038;
     -fx-text-fill: #0A2F35;
 }
@@ -175,23 +175,43 @@
       -fx-background-color: #eee;
 }
 
+
 #table .table-column{
-    -fx-background-color: #eee;
+    /*-fx-background-color: #eee;*/
     -fx-border-width:  0px 0px 5px 0px;
     -fx-border-color: #0A2F35;
+}
+
+#table .column-header{
+    -fx-background-color: #eee;
 }
 
 #table .column-header-background .label{
      -fx-text-fill: #12492Fdd;
      -fx-padding: 15px 0px 15px 0px;
-
 }
+
 
 #table .table-cell {
     -fx-padding: 15px 0px 15px 0px;
     -fx-text-fill: #12492F;
     -fx-border-width: 0px;
     -fx-alignment: center;
+}
+
+#table .table-row-cell{
+        -fx-background-color: #eee;
+}
+
+#table .table-row-cell:hover{
+    -fx-background-color: #0A2F3533;
+}
+
+#table .table-row-cell:selected{
+    -fx-border-width: 2px 0px 2px 0px;
+    -fx-border-color: #F7A325;
+    -fx-font-weight: 700;
+
 }
 
 #table .virtual-flow .scroll-bar:vertical{

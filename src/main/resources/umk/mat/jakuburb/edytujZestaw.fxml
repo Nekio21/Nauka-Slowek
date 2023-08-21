@@ -127,14 +127,19 @@
                <left>
                   <HBox spacing="25.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label fx:id="edytujZestawSave" alignment="CENTER" text="Zapisz zestaw" textAlignment="CENTER">
+                        <Label fx:id="edytujZestawSave" alignment="CENTER" onMouseClicked="#saveMethod" text="Zapisz zestaw" textAlignment="CENTER">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </Label>
-                        <Label fx:id="edytujZestawDelete" alignment="CENTER" text="Usuń zestaw" textAlignment="CENTER">
+                        <Label fx:id="edytujZestawDelete" alignment="CENTER" onMouseClicked="#usunMethod" text="Usuń zestaw" textAlignment="CENTER">
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="edytujZestawPlay" alignment="CENTER" onMouseClicked="#usunMethod" text="Zagraj" textAlignment="CENTER">
+                           <padding>
+                              <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                            </padding>
                         </Label>
                      </children>
@@ -153,11 +158,18 @@
                      <padding>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </padding></TextField>
+                  <Label fx:id="labelFlip" onMouseClicked="#flipMethod" text="Flip" />
                   <TextField fx:id="slowkoStronaB" promptText="Słówko strona B" HBox.hgrow="ALWAYS">
                      <padding>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </padding></TextField>
-                  <Label onMouseClicked="#addMethod" text="Dodaj" />
+                  <VBox fx:id="vBoxElementy" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0">
+                     <children>
+                        <Label fx:id="labelAdd" onMouseClicked="#addMethod" text="Dodaj" />
+                        <Label fx:id="labelAktualizuj" onMouseClicked="#updateMethod" text="Aktualizuj" visible="false" />
+                        <Label fx:id="labelDelete" onMouseClicked="#deleteMethod" text="Usuń" visible="false" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets bottom="35.0" left="20.0" right="20.0" top="35.0" />
@@ -165,8 +177,8 @@
             </HBox>
             <HBox fx:id="edytujZestawHBoxTools" alignment="CENTER_LEFT" spacing="20.0">
                <children>
-                  <Label minWidth="150.0" text="Ilosc słówek: 110" />
-                  <CheckBox mnemonicParsing="false" text="Natychmiastowe zapisywanie" />
+                  <Label fx:id="licznik" minWidth="150.0" text="Ilosc słówek: 0" />
+                  <CheckBox mnemonicParsing="false" text="Natychmiastowe zapisywanie" visible="false" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
@@ -174,11 +186,10 @@
             </HBox>
             <ScrollPane fx:id="edytujZestaw__scroll" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <content>
-                  <TableView fx:id="table" cache="true" editable="true">
+                  <TableView fx:id="table" cache="true" editable="true" onMouseClicked="#tableClickMethod">
                     <columns>
                       <TableColumn prefWidth="-1.0" text="Słowko Strona A" />
                       <TableColumn prefWidth="-1.0" text="Słowko Strona B" />
-                        <TableColumn editable="false" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" sortable="false" text="Narzędzia" />
                     </columns>
                      <opaqueInsets>
                         <Insets />

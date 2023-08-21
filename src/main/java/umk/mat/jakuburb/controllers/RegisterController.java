@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import org.hibernate.Session;
 import umk.mat.jakuburb.database.MyDatabase;
+import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 
@@ -90,7 +91,7 @@ public class RegisterController extends MyController implements MyDatabaseInterf
     }
 
     @Override
-    public Object inside(Session session) {
+    public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
         user = new User();
 
         user.setLogin(loginTF.getText());
@@ -111,7 +112,7 @@ public class RegisterController extends MyController implements MyDatabaseInterf
     }
 
     @Override
-    public void after(Object wynik) {
+    public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
 
     }
 }
