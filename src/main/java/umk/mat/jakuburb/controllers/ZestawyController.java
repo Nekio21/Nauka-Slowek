@@ -4,7 +4,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -15,17 +14,16 @@ import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import org.hibernate.Session;
-import org.hibernate.event.spi.EventType;
 import org.hibernate.query.Query;
+import umk.mat.jakuburb.controllers.helpers.DataSender;
+import umk.mat.jakuburb.controllers.helpers.MyController;
 import umk.mat.jakuburb.database.MyDatabase;
 import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 import umk.mat.jakuburb.encje.ZestawySlowek;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Set;
 
 public class ZestawyController extends MyController implements MyDatabaseInterface {
 
@@ -36,10 +34,6 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     private FlowPane flowPane;
 
     public static String ZESTAW_KEY_ID = "Super ID zestaw ;/";
-
-    private MyDatabase myDatabase;
-    private DataSender dataSender;
-
 
     private String[] sortujList = new String[]{
             "Alfabetycznie",
@@ -52,6 +46,7 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
 
     @FXML
     public void initialize(){
+        super.initialize();
         sortujChoiceBox.getItems().addAll(sortujList);
 
         flowPaneInit();
@@ -69,23 +64,6 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
 
         change("edytujZestaw.fxml", mouseEvent);
     }
-
-    @FXML
-    public void kalendarzMenuAction(MouseEvent mouseEvent){
-        change("calendar.fxml", mouseEvent);
-    }
-
-    @FXML
-    public void homeMenuAction(MouseEvent mouseEvent){
-
-        change("home.fxml", mouseEvent);
-    }
-
-    @FXML
-    public void zestawyEdytujChwilowoMenuAction(MouseEvent mouseEvent){
-        change("edytujZestaw.fxml", mouseEvent);
-    }
-
     @Override
     public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
         User user = (User)dataSender.get(LoginController.PW_KEY_ID);

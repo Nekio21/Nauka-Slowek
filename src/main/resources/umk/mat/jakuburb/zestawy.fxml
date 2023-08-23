@@ -87,7 +87,7 @@
                               </Circle>
                            </children>
                         </StackPane>
-                        <Label text="Nekio21" />
+                        <Label fx:id="nickLabel" text="Nekio21" />
                      </children>
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -97,8 +97,8 @@
                      <children>
                         <Label onMouseClicked="#homeMenuAction" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
-                        <Label styleClass="zaznaczone" text="Zestawy słówek" />
-                        <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />
+                        <Label onMouseClicked="#zestawyMenuAction" styleClass="zaznaczone" text="Zestawy słówek" />
+                        <Label text="Trener" />
                         <Label text="Draw it" />
                      </children>
                      <padding>

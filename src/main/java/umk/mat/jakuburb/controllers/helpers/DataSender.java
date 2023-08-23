@@ -1,4 +1,4 @@
-package umk.mat.jakuburb.controllers;
+package umk.mat.jakuburb.controllers.helpers;
 
 import java.util.HashMap;
 

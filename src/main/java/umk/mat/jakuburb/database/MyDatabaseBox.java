@@ -1,12 +1,12 @@
 package umk.mat.jakuburb.database;
 
+import javafx.event.Event;
 import javafx.scene.input.MouseEvent;
-import org.hibernate.Session;
 
 public class MyDatabaseBox {
 
     private StanyDatabase stany;
-    private MouseEvent mouseEvent;
+    private Event event;
 
     private Object[] array;
 
@@ -17,18 +17,18 @@ public class MyDatabaseBox {
     public MyDatabaseBox(StanyDatabase stany) {
         array = new Object[10];
         this.stany = stany;
-        mouseEvent = null;
+        event = null;
     }
 
-    public MyDatabaseBox(MouseEvent mouseEvent) {
+    public MyDatabaseBox(Event mouseEvent) {
         array = new Object[10];
-        this.mouseEvent = mouseEvent;
+        this.event = mouseEvent;
         stany = StanyDatabase.NULL;
     }
 
-    public MyDatabaseBox(StanyDatabase stany, MouseEvent mouseEvent) {
+    public MyDatabaseBox(StanyDatabase stany, Event mouseEvent) {
         this.stany = stany;
-        this.mouseEvent = mouseEvent;
+        this.event = mouseEvent;
     }
 
     public Object[] getArray() {
@@ -47,11 +47,11 @@ public class MyDatabaseBox {
         this.stany = stany;
     }
 
-    public MouseEvent getMouseEvent() {
-        return mouseEvent;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setMouseEvent(MouseEvent mouseEvent) {
-        this.mouseEvent = mouseEvent;
+    public void setEvent(Event event) {
+        this.event = event;
     }
 }

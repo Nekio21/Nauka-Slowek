@@ -1,22 +1,18 @@
-package umk.mat.jakuburb.controllers;
+package umk.mat.jakuburb.controllers.helpers;
 
-import javafx.fxml.FXML;
+import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.File;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 
-public abstract class MyController {
+public class MyControllerSimple {
 
-
-    protected void change(String nazwa, MouseEvent event){
+    protected void change(String nazwa, Event event){
         try {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -40,5 +36,4 @@ public abstract class MyController {
             System.out.println(e);
         }
     }
-
 }

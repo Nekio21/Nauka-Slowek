@@ -11,7 +11,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.ResultatController">
    <center>
 
    </center>
@@ -82,7 +82,7 @@
                               </Circle>
                            </children>
                         </StackPane>
-                        <Label text="Nekio21" />
+                        <Label fx:id="nickLabel" text="Nekio21" />
                      </children>
                      <VBox.margin>
                         <Insets top="30.0" />
@@ -90,10 +90,10 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                      <children>
-                        <Label styleClass="zaznaczone" text="Strona główna" />
+                        <Label onMouseClicked="#homeMenuAction" styleClass="zaznaczone" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
-                        <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />
+                        <Label text="Trener" />
                         <Label text="Draw it" />
                      </children>
                      <padding>
@@ -116,7 +116,7 @@
          <children>
             <Label fx:id="gratulacje" text="Gratulacje Nekio21" />
             <Label fx:id="gratulacje_opis" maxWidth="600.0" text="Cras sit amet lacus nec mauris vehicula venenatis. Quisque convallis ante vitae dictum mollis. Proin hendrerit eros a pulvinar tincidunt. Donec rhoncus eget massa non molestie. In tempus augue metus, nec ultrices mauris pharetra quis. Aliquam sodales massa nec justo posuere lobortis. In lobortis maximus mauris sed fermentum. Integer sagittis sem aliquet metus luctus, in pharetra diam gravida. Pellentesque ipsum lacus, condimentum et turpis non, pretium facilisis sapien. Aliquam elementum nunc eget massa tincidunt, eget auctor augue porta. Maecenas elementum non ligula sed tincidunt. Ut ac dictum turpis, ut sodales velit. Suspendisse eu libero quis lectus cursus scelerisque. Cras porttitor, orci nec cursus imperdiet, diam sapien sodales diam, at auctor sapien elit id odio. Ut maximus ligula in metus lobortis ullamcorper. " textAlignment="JUSTIFY" wrapText="true" />
-            <Label fx:id="wroc_wynik" text="wróć">
+            <Label fx:id="wroc_wynik" onMouseClicked="#returnMethod" text="wróć">
                <padding>
                   <Insets bottom="10.0" left="40.0" right="40.0" top="10.0" />
                </padding>

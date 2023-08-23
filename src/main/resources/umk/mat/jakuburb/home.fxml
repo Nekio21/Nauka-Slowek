@@ -90,7 +90,7 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                      <children>
-                        <Label styleClass="zaznaczone" text="Strona główna" />
+                        <Label onMouseClicked="#homeMenuAction" styleClass="zaznaczone" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
                         <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />

@@ -1,13 +1,13 @@
 package umk.mat.jakuburb.controllers;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import umk.mat.jakuburb.controllers.helpers.DataSender;
+import umk.mat.jakuburb.controllers.helpers.MyController;
 import umk.mat.jakuburb.database.MyDatabase;
 import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
@@ -18,7 +18,6 @@ import umk.mat.jakuburb.encje.ZestawySlowek;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
@@ -58,11 +57,12 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     @FXML
     private Label labelAdd;
 
-    private MyDatabase myDatabase;
-    private DataSender dataSender;
+    public static final String ZESTAW_TO_PLAY_KEY_ID = "trooooooba";
+
     private List<Slowka> slowkaList = new ArrayList<>();
     private ZestawySlowek zestaw;
     private Slowka selectedSlowko;
+    private int selectedSlowkoId;
 
     //TODO: DODANIE MOZLIWOSCI EDYCJI TABELI
     //TODO: DODANIE MOZLIWOSCI UWUWWANIA ZESTAWU
@@ -76,6 +76,8 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
     @FXML
     public void initialize(){
+        super.initialize();
+
         table.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("textA"));
         table.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("textB"));
         table.setEditable(true);
@@ -105,6 +107,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         myDatabase = MyDatabase.createDatabase();
         MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
         myDatabaseBox.setStany(StanyDatabase.UPDATE_SLOWKA);
+
         myDatabase.makeSession(myDatabaseBox,this);
     }
 
@@ -130,17 +133,21 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
     @FXML
     public void tableClickMethod(MouseEvent mouseEvent){
-        selectedSlowko = table.getSelectionModel().getSelectedItem();
+        try {
+            selectedSlowko = table.getSelectionModel().getSelectedItem();
+            selectedSlowkoId = table.getSelectionModel().getSelectedIndex();
 
-        slowkoStronaB.setText(selectedSlowko.getTextB());
-        slowkoStronaA.setText(selectedSlowko.getTextA());
+            slowkoStronaB.setText(selectedSlowko.getTextB());
+            slowkoStronaA.setText(selectedSlowko.getTextA());
 
-        labelAdd.setVisible(false);
-        labelAktualizuj.setVisible(true);
-        labelDelete.setVisible(true);
+            labelAdd.setVisible(false);
+            labelAktualizuj.setVisible(true);
+            labelDelete.setVisible(true);
 
+            System.out.println(selectedSlowko);
+        }catch (Exception e){
 
-        System.out.println(selectedSlowko);
+        }
     }
 
     private void clearSelect(){
@@ -154,15 +161,23 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         labelDelete.setVisible(false);
 
         selectedSlowko = null;
+        selectedSlowkoId = -1;
     }
 
     //TODO: ENTER TEZ MA DZIALAC
 
     @FXML
+    public void playMethod(MouseEvent mouseEvent){
+        dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
+        dataSender.add(zestaw, ZESTAW_TO_PLAY_KEY_ID);
+        change("gra.fxml", mouseEvent);
+    }
+
+    @FXML
     public void usunMethod(MouseEvent mouseEvent){
         MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
         myDatabaseBox.setStany(StanyDatabase.USUN_ZESTAW);
-        myDatabaseBox.setMouseEvent(mouseEvent);
+        myDatabaseBox.setEvent(mouseEvent);
 
         myDatabase = MyDatabase.createDatabase();
         myDatabase.makeSession(myDatabaseBox, this);
@@ -178,21 +193,6 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         myDatabase.makeSession(myDatabaseBox, this);
     }
 
-    @FXML
-    public void homeMenuAction(MouseEvent mouseEvent){
-        change("home.fxml", mouseEvent);
-    }
-
-    @FXML
-    public void kalendarzMenuAction(MouseEvent mouseEvent){
-        change("calendar.fxml", mouseEvent);
-    }
-
-    @FXML
-    public void zestawyMenuAction(MouseEvent mouseEvent){
-
-        change("zestawy.fxml", mouseEvent);
-    }
 
     @FXML
     public void saveMethod(MouseEvent mouseEvent){
@@ -204,7 +204,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         myDatabase = MyDatabase.createDatabase();
         MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
         myDatabaseBox.setStany(StanyDatabase.ZAPIS_ZESTAWU);
-        myDatabaseBox.setMouseEvent(mouseEvent);
+        myDatabaseBox.setEvent(mouseEvent);
 
         myDatabase.makeSession(myDatabaseBox, this);
     }
@@ -236,7 +236,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     }
 
     private void zapisZestawuAfter(MyDatabaseBox myDatabaseBox, Object wynik){
-        change("zestawy.fxml", myDatabaseBox.getMouseEvent());
+        change("zestawy.fxml", myDatabaseBox.getEvent());
     }
 
     private Object odczytSlowkaInside(MyDatabaseBox myDatabaseBox, Session session){
@@ -335,7 +335,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     }
 
     private void usunZestawAfter(MyDatabaseBox myDatabaseBox, Object wynik){
-        change("zestawy.fxml", myDatabaseBox.getMouseEvent());
+        change("zestawy.fxml", myDatabaseBox.getEvent());
     }
 
     private Object updateSlowkaInside(MyDatabaseBox myDatabaseBox, Session session) {
@@ -345,19 +345,33 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
         session.merge(selectedSlowko);
 
-        return null;
+        return selectedSlowko;
     }
 
+    //TODO: UPDATE I DELETE BEZ ZESTAWU :0
+
     private void updateSlowkaAfter(MyDatabaseBox myDatabaseBox, Object wynik){
-        table.getItems().setAll(zestaw.getSlowka());
-        slowkaList = new ArrayList<>(zestaw.getSlowka());
+        if(zestaw == null){
+            Slowka slowka = (Slowka) wynik;
+
+            table.getItems().set(selectedSlowkoId, slowka);
+            slowkaList.set(selectedSlowkoId, slowka);
+        }else{
+            table.getItems().setAll(zestaw.getSlowka());
+            slowkaList = new ArrayList<>(zestaw.getSlowka());
+        }
+
         clearSelect();
+        licznik.setText("Ilość słowek: " + slowkaList.size());
     }
 
     private Object deleteSlowkaInside(MyDatabaseBox myDatabaseBox, Session session) {
 
         session.remove(selectedSlowko);
-        zestaw.getSlowka().remove(selectedSlowko);
+
+        if(zestaw != null){
+            zestaw.getSlowka().remove(selectedSlowko);
+        }
 
         return selectedSlowko;
     }
@@ -366,8 +380,15 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         Slowka usunieteSlowko = (Slowka) wynik;
 
         table.getItems().remove(usunieteSlowko);
-        slowkaList = new ArrayList<>(zestaw.getSlowka());
+
+        if(zestaw != null) {
+            slowkaList = new ArrayList<>(zestaw.getSlowka());
+        } else{
+            slowkaList.remove(selectedSlowkoId);
+        }
+
         clearSelect();
+        licznik.setText("Ilość słowek: " + slowkaList.size());
     }
 
     @Override

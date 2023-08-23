@@ -9,8 +9,8 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 import org.hibernate.Session;
+import umk.mat.jakuburb.controllers.helpers.MyControllerSimple;
 import umk.mat.jakuburb.database.MyDatabase;
 import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
@@ -19,7 +19,7 @@ import umk.mat.jakuburb.encje.User;
 import java.io.*;
 import java.nio.file.Files;
 
-public class RegisterController extends MyController implements MyDatabaseInterface {
+public class RegisterController extends MyControllerSimple implements MyDatabaseInterface {
 
     @FXML
     private TextField loginTF;
@@ -40,14 +40,6 @@ public class RegisterController extends MyController implements MyDatabaseInterf
     private String login;
     private String haslo;
     private byte[] byteImage;
-
-
-
-
-    @FXML
-    public void initialize(){
-
-    }
 
     @FXML
     public void returnToLogin(MouseEvent mouseEvent){

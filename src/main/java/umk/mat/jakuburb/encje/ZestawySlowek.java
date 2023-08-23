@@ -10,6 +10,22 @@ import java.util.List;
 @Table(name = "Zestawy")
 public class ZestawySlowek {
 
+    //TODO: Zestaw ma tylko jednego uzytkownika, ABLO ZOSTAW TAK JAK JEST OBECNIE I ZRBO TRYB CAOUPE
+    //TODO: ROZDZIEL STATYKE OD ZESTAWU I OD SLOWKA
+    //TODO: MOZLIWOSC PRYWATNE LUB PUBLICZNO
+    //TODO: DAC HASLO LUB NIE
+    //TODO: MOZLIWOSC EDYCJI LUB NIE
+
+    //TODO: STworzyc tabele historia lub statystyka zestawu gdzie beda pola
+    //TODO: poprzedni wynik punktowy, atualny wynik punktowy, data gry, procent,
+    //TODO: Starsza historia jest kumulowa do sredniej i tamte rekorydy sa usuwane
+    //TODO: i jeszcze wiele do jednego tabela stytyka slowka danego polaczona z zestawem
+    //TODO: ALBO NIE
+    //TODO: to do bedzie jednak tabela GRY_USERA, dla jednego rekordu bedzie
+    //TODO: dobre odpowiedzi, zle odpowiedzi, data gry rozpoczecia, data gry zakonczenia, klucz do slowkaStatytyki
+    //TODO: id_gry, id_slowka, (moze ) id_zestawu, porpawnie czy zle
+    //TODO: albo nie wiem
+
     @Id
     @SequenceGenerator(name="sekwencjaa", sequenceName = "zestawy_idzestawy_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "sekwencjaa")
@@ -21,6 +37,9 @@ public class ZestawySlowek {
 
     @Column(name = "punkty")
     private Integer punkty;
+
+    @Column(name = "procentObecnejZnajomosci")
+    private Integer procentObecnejZnajomosci;
 
     @Column(name = "ostatniagra")
     private LocalDateTime ostatniaGra;
@@ -38,9 +57,10 @@ public class ZestawySlowek {
 
     }
 
-    public ZestawySlowek(String name, int punkty, LocalDateTime ostatniaGra, LocalDateTime dataStworzenia) {
+    public ZestawySlowek(String name, int punkty, int procentObecnejZnajomosci,  LocalDateTime ostatniaGra, LocalDateTime dataStworzenia) {
         this.name = name;
         this.punkty = punkty;
+        this.procentObecnejZnajomosci = procentObecnejZnajomosci;
         this.ostatniaGra = ostatniaGra;
         this.dataStworzenia = dataStworzenia;
     }
@@ -101,14 +121,24 @@ public class ZestawySlowek {
         this.slowka = slowka;
     }
 
+    public Integer getProcentObecnejZnajomosci() {
+        return procentObecnejZnajomosci;
+    }
+
+    public void setProcentObecnejZnajomosci(Integer procentObecnejZnajomosci) {
+        this.procentObecnejZnajomosci = procentObecnejZnajomosci;
+    }
+
     @Override
     public String toString() {
         return "ZestawySlowek{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", punkty=" + punkty +
+                ", procentObecnejZnajomosci=" + procentObecnejZnajomosci +
                 ", ostatniaGra=" + ostatniaGra +
                 ", dataStworzenia=" + dataStworzenia +
+                ", slowka=" + slowka +
                 '}';
     }
 }

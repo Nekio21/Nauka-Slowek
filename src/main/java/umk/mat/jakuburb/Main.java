@@ -1,23 +1,14 @@
 package umk.mat.jakuburb;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
-import umk.mat.jakuburb.controllers.MyController;
 import umk.mat.jakuburb.database.MyDatabase;
 
 import java.io.File;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
 
 public class Main extends Application {
 

@@ -7,6 +7,10 @@
  -fx-background-color: #eee;
 }
 
+#scrollFocuse:focused{
+    -fx-focus-color: #0A2F35;
+}
+
 #profilowe{
     -fx-image: url("https://m.media-amazon.com/images/I/71nGkWDLptL._AC_UF894,1000_QL80_.jpg");
 }
@@ -364,7 +368,7 @@
     -fx-border-color: #F7A325;
 }
 
-#check_gra{
+#resultLabel{
     -fx-font-size: 24px;
     -fx-font-weight: 700;
     -fx-text-fill: #12492F;

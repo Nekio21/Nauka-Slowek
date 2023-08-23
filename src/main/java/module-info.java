@@ -11,4 +11,5 @@ module NaukaSlowek {
     opens umk.mat.jakuburb.controllers;
     opens umk.mat.jakuburb.encje;
     opens umk.mat.jakuburb.database;
+    opens umk.mat.jakuburb.controllers.helpers;
 }
