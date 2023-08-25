@@ -27,6 +27,10 @@ public class DataSender {
         return mapa.remove(key);
     }
 
+    public void clear(){
+        mapa.clear();
+    }
+
     public Object get(String key){
         return mapa.get(key);
     }

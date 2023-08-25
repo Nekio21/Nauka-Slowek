@@ -67,4 +67,15 @@ public abstract class MyController extends MyControllerSimple {
         change("calendar.fxml", mouseEvent);
     }
 
+    @FXML
+    public void TrenerMenuAction(MouseEvent mouseEvent){
+        change("trener.fxml", mouseEvent);
+    }
+
+
+    @FXML
+    public void logoutMenuAction(MouseEvent mouseEvent){
+        dataSender.clear();
+        change("login.fxml", mouseEvent);
+    }
 }

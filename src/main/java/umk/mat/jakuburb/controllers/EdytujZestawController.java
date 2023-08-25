@@ -196,11 +196,6 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
     @FXML
     public void saveMethod(MouseEvent mouseEvent){
-        if(zestaw != null){
-            change("zestawy.fxml", mouseEvent);
-            return;
-        }
-
         myDatabase = MyDatabase.createDatabase();
         MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
         myDatabaseBox.setStany(StanyDatabase.ZAPIS_ZESTAWU);
@@ -210,9 +205,13 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     }
 
 
-    //TODO: OGARNIJ TE KASKADOWOSC I JAK CO DO KOGO I beDZIE Z GORKI UWIERZ MI :> BEDZIE DOBRZE
-
     private Object zapisZestawuInside(MyDatabaseBox myDatabaseBox, Session session){
+
+        if(zestaw != null){
+            zestaw.setName(edytujZestaw__name.getText());
+            session.merge(zestaw);
+            return zestaw;
+        }
 
         ZestawySlowek zestawySlowek = new ZestawySlowek();
         User user = (User)dataSender.get(LoginController.PW_KEY_ID);
@@ -268,13 +267,11 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         newSlowko.setTextA(slowkoStronaA.getText());
         newSlowko.setTextB(slowkoStronaB.getText());
 
-        newSlowko.setDobreOdpowiedzi(300);
-
         newSlowko.setDataStworzenia(LocalDateTime.now());
-        newSlowko.setOstatniaGra(LocalDateTime.now());
+        newSlowko.setOstatniaGra(null);
 
-        newSlowko.setDobreOdpowiedzi(12);
-        newSlowko.setZleOdpowiedzi(123);
+        newSlowko.setDobreOdpowiedzi(0);
+        newSlowko.setZleOdpowiedzi(0);
 
         if(zestaw != null) {
             newSlowko.setIdZestawu(zestaw);

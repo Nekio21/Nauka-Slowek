@@ -41,10 +41,10 @@ public class HomeWaiter extends MyController implements MyDatabaseInterface {
     public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
         Long iloscZestawow = (Long)wynik;
 
-        if(iloscZestawow > 1){
-            change("home.fxml", myDatabaseBox.getEvent());
-        }else{
+        if(iloscZestawow > 0){
             change("home2.fxml", myDatabaseBox.getEvent());
+        }else{
+            change("home.fxml", myDatabaseBox.getEvent());
         }
     }
 }

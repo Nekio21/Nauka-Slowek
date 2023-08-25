@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
@@ -23,7 +24,7 @@
     <left>
         <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <bottom>
-                <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+                <Label fx:id="logout" onMouseClicked="#logoutMenuAction" text="Wyloguj mnie" BorderPane.alignment="CENTER">
                     <padding>
                         <Insets bottom="30.0" top="30.0" />
                     </padding>
@@ -98,7 +99,7 @@
                                 <Label onMouseClicked="#homeMenuAction" text="Strona główna" />
                                 <Label onMouseClicked="#kalendarzMenuAction" styleClass="zaznaczone" text="Kalendarz nauki" />
                                 <Label onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
-                                <Label text="Trener" />
+                                <Label onMouseClicked="#TrenerMenuAction" text="Trener" />
                                 <Label text="Draw it" />
                             </children>
                             <padding>
@@ -121,7 +122,13 @@
          <children>
               <VBox fx:id="cos" alignment="CENTER" minHeight="-Infinity" StackPane.alignment="CENTER">
                <children>
-                  <Label fx:id="TitleKalendar" alignment="CENTER" text="02 Maj 2023 - Kalendarz" textAlignment="CENTER" />
+                  <HBox alignment="CENTER" spacing="40.0">
+                     <children>
+                        <Label onMouseClicked="#backMounthMethod" styleClass="kalendarzPrzyciski" text="&lt;" />
+                        <Label fx:id="titleKalendar" alignment="CENTER" maxHeight="400.0" minWidth="400.0" prefWidth="400.0" text="Maj 2023 - Kalendarz" textAlignment="CENTER" />
+                        <Label onMouseClicked="#nextMounthMethod" styleClass="kalendarzPrzyciski" text="&gt;" />
+                     </children>
+                  </HBox>
                   <GridPane fx:id="grdsd" alignment="CENTER" hgap="10.0" prefHeight="229.0" prefWidth="400.0" vgap="25.0">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" maxWidth="-Infinity" />
@@ -204,7 +211,7 @@
                               <Font size="11.0" />
                            </font>
                         </Label>
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="1">
+                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.rowIndex="1">
                            <children>
                               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
                                  <font>
@@ -213,47 +220,297 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="3" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="2" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="1" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="4" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="6" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="5" GridPane.rowIndex="5" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.rowIndex="5" />
-                        <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="1"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="1"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="1"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="1"><children>
+                             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                     <Font size="36.0" />
+                                 </font>
+                             </Label>
+                         </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="2"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="2"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="2"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="2"><children>
+                             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                     <Font size="36.0" />
+                                 </font>
+                             </Label>
+                         </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.rowIndex="3"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="3"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="3"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="3"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="3"><children>
+                             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                     <Font size="36.0" />
+                                 </font>
+                             </Label>
+                         </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="4"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.rowIndex="5"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="5"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5"><children>
+                             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                     <Font size="36.0" />
+                                 </font>
+                             </Label>
+                         </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="5"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="5"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="5"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="5">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="0" GridPane.rowIndex="6"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="6"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="4" GridPane.rowIndex="6"><children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="5" GridPane.rowIndex="6"><children>
+                             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                     <Font size="36.0" />
+                                 </font>
+                             </Label>
+                         </children></Pane>
+                         <Pane maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" styleClass="kalendarzTitle" visible="false" GridPane.columnIndex="6" GridPane.rowIndex="6"><children>
+                             <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="70" maxWidth="70" minHeight="70" minWidth="70" prefHeight="70" prefWidth="70" text="1" textAlignment="CENTER">
+                                 <font>
+                                     <Font size="36.0" />
+                                 </font>
+                             </Label>
+                         </children></Pane>
                      </children>
                   </GridPane>
                </children>

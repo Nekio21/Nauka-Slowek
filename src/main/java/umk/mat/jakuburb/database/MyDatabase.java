@@ -3,9 +3,7 @@ package umk.mat.jakuburb.database;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import umk.mat.jakuburb.encje.Slowka;
-import umk.mat.jakuburb.encje.User;
-import umk.mat.jakuburb.encje.ZestawySlowek;
+import umk.mat.jakuburb.encje.*;
 
 import java.io.File;
 import java.net.URL;
@@ -42,9 +40,14 @@ public class MyDatabase implements Runnable{
         }catch (Exception e){
             System.out.println(e);
         }
+
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(ZestawySlowek.class);
         configuration.addAnnotatedClass(Slowka.class);
+
+        configuration.addAnnotatedClass(Kalendarz.class);
+        configuration.addAnnotatedClass(Gra.class);
+        configuration.addAnnotatedClass(SlowkaGra.class);
 
         sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();

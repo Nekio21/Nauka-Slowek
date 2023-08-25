@@ -13,14 +13,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.HomeController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.TrenerController">
    <center>
 
    </center>
    <left>
       <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <bottom>
-            <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+            <Label fx:id="logout" onMouseClicked="#logoutMenuAction" text="Wyloguj mnie" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding>
@@ -92,10 +92,10 @@
                   </VBox>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
                      <children>
-                        <Label onMouseClicked="#homeMenuAction" styleClass="zaznaczone" text="Strona główna" />
+                        <Label onMouseClicked="#homeMenuAction" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
-                        <Label text="Trener" />
+                        <Label onMouseClicked="#TrenerMenuAction" styleClass="zaznaczone" text="Trener" />
                         <Label text="Draw it" />
                      </children>
                      <padding>
@@ -116,14 +116,14 @@
    <center>
       <VBox fx:id="cos" alignment="TOP_CENTER" minHeight="-Infinity" minWidth="0.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="title_trener" text="Witaj Nekio21">
+            <Label fx:id="titleTrener" text="Witaj Nekio21">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>
             </Label>
             <Label fx:id="spis_trener" maxHeight="-Infinity" maxWidth="500.0" text="Twój trener przygotował dla Ciebie nowy trening dla słowek, który czas najwyższy powtórzyć :) Regularne powtarzenie słówek w odpowiednich przerwach pozwala na dłuuuugie zapamietanie nich. Dzieki Trenorowi czas działa tylko na twoja kożysc. Nie pozostaje mi nic innego jak życzyc udaj nauki :)" textAlignment="JUSTIFY" wrapText="true" />
-            <Label fx:id="przycisk_trener" text="Rozpocznij juz teraz" />
-            <Label fx:id="zestaw_trener" text="twoj progres w zestawie &quot;jedzenie&quot;" />
+            <Label fx:id="przyciskTrener" text="Rozpocznij juz teraz" />
+            <Label fx:id="zestawTrener" text="twoj progres w zestawie &quot;jedzenie&quot;" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="BOTTOM_CENTER" spacing="10.0">

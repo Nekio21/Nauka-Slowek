@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Slowka")
@@ -39,6 +41,9 @@ public class Slowka {
 
     @Column(name = "ostatniagra")
     private LocalDateTime ostatniaGra;
+
+    @OneToMany(mappedBy = "slowka", fetch = FetchType.LAZY)
+    private List<SlowkaGra> slowkaGraList = new ArrayList<>();
 
     public Slowka(){
 
@@ -125,6 +130,22 @@ public class Slowka {
 
     public void setOstatniaGra(LocalDateTime ostatniaGra) {
         this.ostatniaGra = ostatniaGra;
+    }
+
+    public ZestawySlowek getZestawySlowek() {
+        return zestawySlowek;
+    }
+
+    public void setZestawySlowek(ZestawySlowek zestawySlowek) {
+        this.zestawySlowek = zestawySlowek;
+    }
+
+    public List<SlowkaGra> getSlowkaGraList() {
+        return slowkaGraList;
+    }
+
+    public void setSlowkaGraList(List<SlowkaGra> slowkaGraList) {
+        this.slowkaGraList = slowkaGraList;
     }
 
     @Override

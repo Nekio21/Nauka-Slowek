@@ -32,6 +32,8 @@ public class User {
     )
     private List<ZestawySlowek> zestawySlowek = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.REMOVE},fetch = FetchType.LAZY)
+    private List<Kalendarz> kalendarzList = new ArrayList<>();
 
     public User(){
 
@@ -81,5 +83,13 @@ public class User {
 
     public void setZestawySlowek(List<ZestawySlowek> zestawySlowek) {
         this.zestawySlowek = zestawySlowek;
+    }
+
+    public List<Kalendarz> getKalendarzList() {
+        return kalendarzList;
+    }
+
+    public void setKalendarzList(List<Kalendarz> kalendarzList) {
+        this.kalendarzList = kalendarzList;
     }
 }

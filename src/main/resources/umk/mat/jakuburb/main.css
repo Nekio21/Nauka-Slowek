@@ -98,7 +98,7 @@
     -fx-border-width: 0px 0px 5px 0px;
 }
 
-#TitleKalendar{
+#titleKalendar{
     -fx-font-family: "Segoe UI Black";
     -fx-text-fill: #12492F;
     -fx-font-size: 36px;
@@ -386,7 +386,7 @@
     -fx-text-fill: #0A2F35;
 }
 
-#title_trener, #gratulacje{
+#titleTrener, #gratulacje{
     -fx-text-fill: #0A2F35;
     -fx-font-size: 36px;
 }
@@ -397,7 +397,7 @@
     -fx-font-weight: 200;
 }
 
-#przycisk_trener, #showMore_sg{
+#przyciskTrener, #showMore_sg{
     -fx-padding: 10px 30px 10px 30px;
     -fx-background-color: #0A2F35;
     -fx-text-fill: #F56038;
@@ -426,7 +426,7 @@
     -fx-text-fill: #12492F99;
 }
 
-#przycisk_trener:hover, #showMore_sg:hover{
+#przyciskTrener:hover, #showMore_sg:hover{
     -fx-background-color: #F56038;
     -fx-text-fill: #0A2F35;
 }
@@ -442,7 +442,7 @@
     -fx-background-image: url("assets/tlo2.png");
 }
 
-#wynik_sg{
+#wynikSg{
     -fx-font-size: 36px;
     -fx-font-weight: 900;
     -fx-text-fill: #F56038;
@@ -456,7 +456,7 @@
     -fx-background-image: url("assets/tlo3.3.png");
 }
 
-#wybrane_slowko{
+#wybraneSlowko{
       -fx-font-size: 36px;
       -fx-font-weight: 900;
       -fx-text-fill: #FFCA7A;
@@ -498,3 +498,14 @@
     -fx-text-fill: #12492F;
 }
 
+.kalendarzPrzyciski{
+    -fx-font-weight: 700;
+    -fx-font-size: 24px;
+    -fx-cursor: hand;
+    -fx-text-fill: #12492F;
+}
+
+
+.kalendarzPrzyciski:hover{
+    -fx-text-fill: #0A2F35;
+}

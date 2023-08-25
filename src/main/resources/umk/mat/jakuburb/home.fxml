@@ -18,7 +18,7 @@
    <left>
       <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <bottom>
-            <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+            <Label fx:id="logout" onMouseClicked="#logoutMenuAction" text="Wyloguj mnie" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding>
@@ -93,7 +93,7 @@
                         <Label onMouseClicked="#homeMenuAction" styleClass="zaznaczone" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
-                        <Label onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Trener" />
+                        <Label onMouseClicked="#TrenerMenuAction" text="Trener" />
                         <Label text="Draw it" />
                      </children>
                      <padding>
@@ -115,7 +115,7 @@
       <VBox fx:id="cos" alignment="CENTER" minHeight="-Infinity" minWidth="0.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="nothingLabel" text="Nie masz jeszcze żadnego zestawu" />
-            <Label fx:id="nothingCreate" onMouseClicked="#zestawyEdytujChwilowoMenuAction" text="Utwórz zestaw" />
+            <Label fx:id="nothingCreate" onMouseClicked="#createNewPackageMethod" text="Utwórz zestaw" />
          </children>
       </VBox>
    </center>

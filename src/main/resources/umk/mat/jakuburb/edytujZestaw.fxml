@@ -24,7 +24,7 @@
    <left>
       <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <bottom>
-            <Label fx:id="logout" text="Wyloguj mnie" BorderPane.alignment="CENTER">
+            <Label fx:id="logout" onMouseClicked="#logoutMenuAction"  text="Wyloguj mnie" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding>
@@ -99,7 +99,7 @@
                         <Label onMouseClicked="#homeMenuAction" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label onMouseClicked="#zestawyMenuAction" styleClass="zaznaczone" text="Zestawy słówek" />
-                        <Label text="Trener" />
+                        <Label text="Trener" onMouseClicked="#TrenerMenuAction"/>
                         <Label text="Draw it" />
                      </children>
                      <padding>

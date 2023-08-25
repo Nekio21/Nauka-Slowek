@@ -8,4 +8,13 @@ public enum StanyDatabase {
     USUN_ZESTAW,
     UPDATE_SLOWKA,
     DELETE_SLOWKO,
+
+    GET_ZESTAWY,
+    RANDOM_WORD,
+    THE_BEST,
+    THE_WORST,
+
+    READ_CALENDAR,
+    UPDATE_CALENDAR,
+    CREATE_CALENDAR
 }
