@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -17,6 +19,7 @@ import umk.mat.jakuburb.controllers.helpers.MyController;
 import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.database.StanyDatabase;
+import umk.mat.jakuburb.encje.HistoriaZestawu;
 import umk.mat.jakuburb.encje.Slowka;
 import umk.mat.jakuburb.encje.User;
 import umk.mat.jakuburb.encje.ZestawySlowek;
@@ -67,6 +70,15 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
     @FXML
     private Label bestLabel1;
 
+    @FXML
+    private StackPane wykreStackPane;
+
+    @FXML
+    private Label titleSlupkiSg;
+
+    @FXML
+    private HBox slupkiHBox;
+
     private final String zestawyQuery = "SELECT u.zestawySlowek From User u where u.id = :id";
     private final String losoweSlowkoQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.login = :name order by random() limit 1";
     private final String najtrudniejszeSlowkaQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.id = :id order by zleOdpowiedzi limit 3";
@@ -79,9 +91,14 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
     @FXML
     public void initialize(){
         super.initialize();
+
         user = (User)dataSender.get(LoginController.PW_KEY_ID);
+
+        wykreStackPane.managedProperty().bind(wykreStackPane.visibleProperty());
+
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.GET_ZESTAWY), this);
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.RANDOM_WORD), this);
+        myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.HOME_WYKRES_POGRESS), this);
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.THE_BEST), this);
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.THE_WORST), this);
     }
@@ -182,6 +199,56 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
         setTheBestTheWorst(list, Arrays.asList(worstLabel1, worstLabel2, worstLabel3), true);
     }
 
+
+    private Object wykresyInside(MyDatabaseBox myDatabaseBox, Session session){
+        List<ZestawySlowek> z = user.getZestawySlowek();
+
+        for(ZestawySlowek zestawySlowek: z){
+            Query<HistoriaZestawu> query = session.createQuery("From HistoriaZestawu h WHERE h.zestawySlowek = :zes", HistoriaZestawu.class);
+            query.setParameter("zes", zestawySlowek);
+
+            zestawySlowek.setHistoriaZestawuList(query.getResultList());
+        }
+
+        return z;
+    }
+
+    private void wykresyAfter(MyDatabaseBox myDatabaseBox, Object wynik){
+        List<ZestawySlowek> zestawySlowekList = (List<ZestawySlowek>) wynik;
+
+        Collections.shuffle(zestawySlowekList);
+
+        for(ZestawySlowek z: zestawySlowekList){
+            ArrayList<HistoriaZestawu> theBestHistory;
+
+
+            long ilosc = z.getHistoriaZestawuList().stream().count();
+            long iloscPotencjalnejHistori;
+
+            if(ilosc > 2){
+                theBestHistory = new ArrayList<>();
+                theBestHistory.add(z.getHistoriaZestawuList().get(0));
+
+                for(HistoriaZestawu history : z.getHistoriaZestawuList()){
+                    if(theBestHistory.get(theBestHistory.size()-1).getProcentZnajmosci() != null) {
+                        if (theBestHistory.get(theBestHistory.size() - 1).getProcentZnajmosci() <= history.getProcentZnajmosci()) {
+                            theBestHistory.add(history);
+                        }
+                    }
+                }
+
+                iloscPotencjalnejHistori = theBestHistory.size();
+
+                if(iloscPotencjalnejHistori > 3){
+                    rysujWykres(theBestHistory);
+                    return;
+                }
+            }
+        }
+
+        nieRysujWykres();
+    }
+
     @Override
     public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
         switch (myDatabaseBox.getStany()){
@@ -193,6 +260,7 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
             case RANDOM_WORD -> { return getRandomWordInside(myDatabaseBox, session);}
             case THE_BEST -> { return getTheBestInside(myDatabaseBox, session);}
             case THE_WORST -> { return getTheWorstInside(myDatabaseBox, session);}
+            case HOME_WYKRES_POGRESS -> { return wykresyInside(myDatabaseBox, session);}
         }
 
         return null;
@@ -205,6 +273,7 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
             case RANDOM_WORD -> getRandomWordAfter(myDatabaseBox, wynik);
             case THE_BEST -> getTheBestAfter(myDatabaseBox, wynik);
             case THE_WORST -> getTheWorstAfter(myDatabaseBox, wynik);
+            case HOME_WYKRES_POGRESS -> wykresyAfter(myDatabaseBox, wynik);
         }
     }
 
@@ -297,5 +366,41 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
     @FXML
     public void goToTrenerMethod(MouseEvent mouseEvent){
         change("trener.fxml", mouseEvent);
+    }
+
+    private void nieRysujWykres(){
+        wykreStackPane.setVisible(false);
+    }
+
+    private void rysujWykres(ArrayList<HistoriaZestawu> theBestHistory){
+        titleSlupkiSg.setText("Twój proges - zestaw: \"" + theBestHistory.get(0).getZestawySlowek().getName() + "\"");
+        int index = 1;
+        int i=0;
+        int size = theBestHistory.size();
+
+        Random random = new Random();
+
+        int[] indexTab = {index, (random.nextInt(size-1))%(size-3) + 2,size-1};
+
+        if(theBestHistory.size() < 4){
+            nieRysujWykres();
+            return;
+        }
+
+        for(Node v: slupkiHBox.getChildren()){
+
+            if(v instanceof VBox){
+
+                int dnien = theBestHistory.get(indexTab[i]).getDataGry().getDayOfMonth();
+                int miesiac = theBestHistory.get(indexTab[i]).getDataGry().getMonthValue();
+                int year = theBestHistory.get(indexTab[i]).getDataGry().getYear();
+
+                ((Label)((VBox) v).getChildren().get(0)).setText(theBestHistory.get(indexTab[i]).getProcentZnajmosci() + "%");
+                ((Pane)((VBox) v).getChildren().get(1)).setMinHeight(4 * theBestHistory.get(indexTab[i]).getProcentZnajmosci());
+                ((Label)((VBox) v).getChildren().get(2)).setText("Poziom wiedzy z " +  dnien + "." + miesiac + "." + year);
+
+                i++;
+            }
+        }
     }
 }

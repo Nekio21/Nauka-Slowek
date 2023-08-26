@@ -7,9 +7,9 @@ import jakarta.persistence.*;
 public class SlowkaGra {
 
     @Id
-    @SequenceGenerator(name="sekwencja", sequenceName = "slowkagra_idSlowkaGra_seq", allocationSize = 1)
+    @SequenceGenerator(name="sekwencja", sequenceName = "slowkagra_idslowkagra_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "sekwencja")
-    @Column(name = "idSlowkaGra")
+    @Column(name = "idslowkagra")
     private Integer id;
 
     @ManyToOne
@@ -20,7 +20,10 @@ public class SlowkaGra {
     @JoinColumn(name = "idSlowka")
     private Slowka slowka;
 
+    @Column(name = "dobrzeczyzle")
     private Boolean dobrzeCzyZle;
+
+
 
     public SlowkaGra() {
     }

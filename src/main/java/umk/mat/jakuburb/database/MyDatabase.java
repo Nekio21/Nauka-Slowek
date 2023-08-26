@@ -48,6 +48,7 @@ public class MyDatabase implements Runnable{
         configuration.addAnnotatedClass(Kalendarz.class);
         configuration.addAnnotatedClass(Gra.class);
         configuration.addAnnotatedClass(SlowkaGra.class);
+        configuration.addAnnotatedClass(HistoriaZestawu.class);
 
         sessionFactory = configuration.buildSessionFactory();
         Session session = sessionFactory.getCurrentSession();

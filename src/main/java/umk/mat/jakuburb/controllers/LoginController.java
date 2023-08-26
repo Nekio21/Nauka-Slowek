@@ -20,6 +20,8 @@ import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
 import umk.mat.jakuburb.encje.User;
 
+import java.time.LocalDateTime;
+
 public class LoginController extends MyControllerSimple implements MyDatabaseInterface {
 
     @FXML
@@ -78,6 +80,10 @@ public class LoginController extends MyControllerSimple implements MyDatabaseInt
 
         if(wynik == 1){
             user = q.getResultStream().toList().get(0);
+            user.setLogowanieDate(LocalDateTime.now());
+            //user.setLogowanieDate(LocalDateTime.of(2023,8,30,12,12));
+
+            session.merge(user);
         }else{
             user = null;
         }

@@ -213,21 +213,21 @@
                               <Insets top="50.0" />
                            </StackPane.margin>
                         </Label>
-                        <Label fx:id="save_sg" text="Zapisz słówko" StackPane.alignment="BOTTOM_LEFT">
+                        <Label fx:id="save_sg" text="Zapisz słówko" visible="false" StackPane.alignment="BOTTOM_LEFT">
                            <StackPane.margin>
                               <Insets bottom="25.0" left="25.0" />
                            </StackPane.margin>
                         </Label>
                      </children>
                   </StackPane>
-                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                  <StackPane fx:id="wykreStackPane" prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="title_slupki_sg" maxWidth="300.0" text="Twój proges - zestaw: “jedzenie”" wrapText="true" StackPane.alignment="CENTER">
+                        <Label fx:id="titleSlupkiSg" maxWidth="300.0" text="Twój proges - zestaw: “jedzenie”" wrapText="true" StackPane.alignment="CENTER">
                            <StackPane.margin>
                               <Insets bottom="400.0" right="450.0" />
                            </StackPane.margin>
                         </Label>
-                        <HBox alignment="CENTER" minHeight="500.0" prefHeight="500.0" spacing="30.0">
+                        <HBox fx:id="slupkiHBox" alignment="CENTER" minHeight="500.0" prefHeight="500.0" spacing="30.0">
                            <children>
                               <VBox alignment="BOTTOM_CENTER" spacing="10.0">
                                  <children>

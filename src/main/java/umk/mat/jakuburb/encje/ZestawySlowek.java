@@ -9,23 +9,6 @@ import java.util.List;
 @Entity
 @Table(name = "Zestawy")
 public class ZestawySlowek {
-
-    //TODO: Zestaw ma tylko jednego uzytkownika, ABLO ZOSTAW TAK JAK JEST OBECNIE I ZRBO TRYB CAOUPE
-    //TODO: ROZDZIEL STATYKE OD ZESTAWU I OD SLOWKA
-    //TODO: MOZLIWOSC PRYWATNE LUB PUBLICZNO
-    //TODO: DAC HASLO LUB NIE
-    //TODO: MOZLIWOSC EDYCJI LUB NIE
-
-    //TODO: STworzyc tabele historia lub statystyka zestawu gdzie beda pola
-    //TODO: poprzedni wynik punktowy, atualny wynik punktowy, data gry, procent,
-    //TODO: Starsza historia jest kumulowa do sredniej i tamte rekorydy sa usuwane
-    //TODO: i jeszcze wiele do jednego tabela stytyka slowka danego polaczona z zestawem
-    //TODO: ALBO NIE
-    //TODO: to do bedzie jednak tabela GRY_USERA, dla jednego rekordu bedzie
-    //TODO: dobre odpowiedzi, zle odpowiedzi, data gry rozpoczecia, data gry zakonczenia, klucz do slowkaStatytyki
-    //TODO: id_gry, id_slowka, (moze ) id_zestawu, porpawnie czy zle
-    //TODO: albo nie wiem
-
     @Id
     @SequenceGenerator(name="sekwencjaa", sequenceName = "zestawy_idzestawy_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "sekwencjaa")
@@ -53,16 +36,22 @@ public class ZestawySlowek {
     @OneToMany(mappedBy = "zestawySlowek", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
     private List<Slowka> slowka = new ArrayList<>();
 
+    @OneToMany(mappedBy = "zestawySlowek", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    private List<HistoriaZestawu> historiaZestawuList = new ArrayList<>();
+
     public ZestawySlowek(){
 
     }
 
-    public ZestawySlowek(String name, int punkty, int procentObecnejZnajomosci,  LocalDateTime ostatniaGra, LocalDateTime dataStworzenia) {
+    public ZestawySlowek(String name, Integer punkty, Integer procentObecnejZnajomosci, LocalDateTime ostatniaGra, LocalDateTime dataStworzenia, List<User> uzytkownicy, List<Slowka> slowka, List<HistoriaZestawu> historiaZestawuList) {
         this.name = name;
         this.punkty = punkty;
         this.procentObecnejZnajomosci = procentObecnejZnajomosci;
         this.ostatniaGra = ostatniaGra;
         this.dataStworzenia = dataStworzenia;
+        this.uzytkownicy = uzytkownicy;
+        this.slowka = slowka;
+        this.historiaZestawuList = historiaZestawuList;
     }
 
     public Long getId() {
@@ -127,6 +116,14 @@ public class ZestawySlowek {
 
     public void setProcentObecnejZnajomosci(Integer procentObecnejZnajomosci) {
         this.procentObecnejZnajomosci = procentObecnejZnajomosci;
+    }
+
+    public List<HistoriaZestawu> getHistoriaZestawuList() {
+        return historiaZestawuList;
+    }
+
+    public void setHistoriaZestawuList(List<HistoriaZestawu> historiaZestawuList) {
+        this.historiaZestawuList = historiaZestawuList;
     }
 
     @Override

@@ -1,10 +1,11 @@
 package umk.mat.jakuburb.encje;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
-import umk.mat.jakuburb.controllers.helpers.DayValue;
+import umk.mat.jakuburb.usefullClass.DayValue;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "kalendarz")
@@ -26,6 +27,9 @@ public class Kalendarz {
     @Column(name = "dayValue")
     @Enumerated(EnumType.STRING)
     private DayValue dayValue;
+
+    @OneToMany(mappedBy = "kalendarz", fetch = FetchType.LAZY)
+    private List<Gra> graList = new ArrayList<>();
 
     public Kalendarz() {
     }
@@ -66,5 +70,13 @@ public class Kalendarz {
 
     public void setDayValue(DayValue dayValue) {
         this.dayValue = dayValue;
+    }
+
+    public List<Gra> getGraList() {
+        return graList;
+    }
+
+    public void setGraList(List<Gra> graList) {
+        this.graList = graList;
     }
 }

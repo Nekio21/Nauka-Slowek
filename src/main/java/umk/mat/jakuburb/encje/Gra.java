@@ -1,6 +1,7 @@
 package umk.mat.jakuburb.encje;
 
 import jakarta.persistence.*;
+import umk.mat.jakuburb.usefullClass.GameModes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,6 +21,10 @@ public class Gra {
     @JoinColumn(name = "idKalendarz")
     private Kalendarz kalendarz;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gamemode")
+    private GameModes gameMode;
+
     @Column(name = "rozpoczeciegry")
     private LocalDateTime dataGry;
 
@@ -29,10 +34,11 @@ public class Gra {
     public Gra() {
     }
 
-    public Gra(Integer idGra, Kalendarz kalendarz, LocalDateTime dataGry) {
-        this.idGra = idGra;
+    public Gra(Kalendarz kalendarz, GameModes gameMode, LocalDateTime dataGry, List<SlowkaGra> slowkaGraList) {
         this.kalendarz = kalendarz;
+        this.gameMode = gameMode;
         this.dataGry = dataGry;
+        this.slowkaGraList = slowkaGraList;
     }
 
     public Integer getIdGra() {
@@ -65,5 +71,13 @@ public class Gra {
 
     public void setSlowkaGraList(List<SlowkaGra> slowkaGraList) {
         this.slowkaGraList = slowkaGraList;
+    }
+
+    public GameModes getGameMode() {
+        return gameMode;
+    }
+
+    public void setGameMode(GameModes gameMode) {
+        this.gameMode = gameMode;
     }
 }

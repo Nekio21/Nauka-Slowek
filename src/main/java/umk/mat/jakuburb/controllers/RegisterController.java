@@ -18,6 +18,7 @@ import umk.mat.jakuburb.encje.User;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.time.LocalDateTime;
 
 public class RegisterController extends MyControllerSimple implements MyDatabaseInterface {
 
@@ -88,6 +89,7 @@ public class RegisterController extends MyControllerSimple implements MyDatabase
 
         user.setLogin(loginTF.getText());
         user.setPassword(hasloTF.getText());
+        user.setLogowanieDate(LocalDateTime.now());
 
         try {
             byteImage = Files.readAllBytes(image.toPath());

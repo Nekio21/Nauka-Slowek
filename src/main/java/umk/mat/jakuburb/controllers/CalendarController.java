@@ -8,8 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import umk.mat.jakuburb.controllers.helpers.DataSender;
-import umk.mat.jakuburb.controllers.helpers.DayValue;
+import umk.mat.jakuburb.usefullClass.DayValue;
 import umk.mat.jakuburb.controllers.helpers.MyController;
 import umk.mat.jakuburb.database.MyDatabaseBox;
 import umk.mat.jakuburb.database.MyDatabaseInterface;
@@ -22,7 +21,6 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 
 public class CalendarController extends MyController implements MyDatabaseInterface {
 

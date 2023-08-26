@@ -1,4 +1,4 @@
-package umk.mat.jakuburb.controllers.helpers;
+package umk.mat.jakuburb.usefullClass;
 
 public enum DayValue {
     NONE("eee", "Nie oznaczone"),

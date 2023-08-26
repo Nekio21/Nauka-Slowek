@@ -2,6 +2,7 @@ package umk.mat.jakuburb.encje;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class User {
     @Column(name = "image", columnDefinition="org.hibernate.type.BinaryType")
     private byte[] image;
 
+    @Column(name="logowaniedate")
+    private LocalDateTime logowanieDate;
+
     @ManyToMany
     @JoinTable(
             name = "UserZestawy",
@@ -39,10 +43,21 @@ public class User {
 
     }
 
-    public User(String login, String password, byte[] image) {
+    public User(String login, String password, byte[] image, LocalDateTime logowanieDate, List<ZestawySlowek> zestawySlowek, List<Kalendarz> kalendarzList) {
         this.login = login;
         this.password = password;
         this.image = image;
+        this.logowanieDate = logowanieDate;
+        this.zestawySlowek = zestawySlowek;
+        this.kalendarzList = kalendarzList;
+    }
+
+
+    public User(String login, String password, byte[] image, LocalDateTime logowanieDate) {
+        this.login = login;
+        this.password = password;
+        this.image = image;
+        this.logowanieDate = logowanieDate;
     }
 
     public Long getId() {
@@ -91,5 +106,13 @@ public class User {
 
     public void setKalendarzList(List<Kalendarz> kalendarzList) {
         this.kalendarzList = kalendarzList;
+    }
+
+    public LocalDateTime getLogowanieDate() {
+        return logowanieDate;
+    }
+
+    public void setLogowanieDate(LocalDateTime logowanieDate) {
+        this.logowanieDate = logowanieDate;
     }
 }

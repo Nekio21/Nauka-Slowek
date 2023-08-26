@@ -17,7 +17,7 @@ public class Slowka {
     @Column(name = "idslowko")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idzestawu")
     private ZestawySlowek zestawySlowek;
 
@@ -45,11 +45,14 @@ public class Slowka {
     @OneToMany(mappedBy = "slowka", fetch = FetchType.LAZY)
     private List<SlowkaGra> slowkaGraList = new ArrayList<>();
 
+    @Column(name = "ostatniaodpowiedzdobra")
+    private Boolean ostatniaOdpowiedzDobra;
+
     public Slowka(){
 
     }
 
-    public Slowka(ZestawySlowek zestawySlowek, String textA, String textB, Integer dobreOdpowiedzi, Integer zleOdpowiedzi, Integer punkty, LocalDateTime dataStworzenia, LocalDateTime ostatniaGra) {
+    public Slowka(ZestawySlowek zestawySlowek, String textA, String textB, Integer dobreOdpowiedzi, Integer zleOdpowiedzi, Integer punkty, LocalDateTime dataStworzenia, LocalDateTime ostatniaGra, List<SlowkaGra> slowkaGraList, Boolean ostatniaOdpowiedzDobra) {
         this.zestawySlowek = zestawySlowek;
         this.textA = textA;
         this.textB = textB;
@@ -58,6 +61,8 @@ public class Slowka {
         this.punkty = punkty;
         this.dataStworzenia = dataStworzenia;
         this.ostatniaGra = ostatniaGra;
+        this.slowkaGraList = slowkaGraList;
+        this.ostatniaOdpowiedzDobra = ostatniaOdpowiedzDobra;
     }
 
     public Long getId() {
@@ -146,6 +151,14 @@ public class Slowka {
 
     public void setSlowkaGraList(List<SlowkaGra> slowkaGraList) {
         this.slowkaGraList = slowkaGraList;
+    }
+
+    public Boolean getOstatniaOdpowiedzDobra() {
+        return ostatniaOdpowiedzDobra;
+    }
+
+    public void setOstatniaOdpowiedzDobra(Boolean ostatniaOdpowiedzDobra) {
+        this.ostatniaOdpowiedzDobra = ostatniaOdpowiedzDobra;
     }
 
     @Override
