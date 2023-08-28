@@ -100,31 +100,7 @@ public class LoginController extends MyControllerSimple implements MyDatabaseInt
             dataSender.add(result, PW_KEY_ID);
             HomeWaiter.checkDishes(result.getId(), myDatabaseBox.getEvent());
         }else{
-            Popup popup = new Popup();
-            Label label = new Label("Zle dane logowania :/");
-
-            label.setMinWidth(350);
-            label.setMinHeight(200);
-
-            label.setStyle(
-                    " -fx-background-color: #12492F77;" +
-                    " -fx-text-fill: #FFCA7A;" +
-                    " -fx-font-weight: 700;" +
-                    " -fx-alignment: center;" +
-                    " -fx-font-size: 36px;" +
-                    " -fx-padding: 10px 30px 10px 30px;"
-            );
-
-            popup.getContent().add(label);
-
-            popup.show(((Node)ms.getSource()).getScene().getWindow());
-
-            PauseTransition schowaj = new PauseTransition(Duration.seconds(2));
-            schowaj.setOnFinished(e->{
-                popup.hide();
-            });
-
-            schowaj.play();
+            popup("Nie udało się zalogować :<",myDatabaseBox.getEvent() );
         }
     }
 }

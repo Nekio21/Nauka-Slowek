@@ -1,11 +1,15 @@
 package umk.mat.jakuburb.controllers.helpers;
 
+import javafx.animation.PauseTransition;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
@@ -35,5 +39,33 @@ public class MyControllerSimple {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+
+    protected void popup(String info, Event event){
+        Popup popup = new Popup();
+        Label label = new Label(info);
+
+        label.setMinWidth(350);
+        label.setMinHeight(200);
+
+        label.setStyle(
+                " -fx-background-color: #12492F77;" +
+                        " -fx-text-fill: #FFCA7A;" +
+                        " -fx-font-weight: 700;" +
+                        " -fx-alignment: center;" +
+                        " -fx-font-size: 36px;" +
+                        " -fx-padding: 10px 30px 10px 30px;"
+        );
+
+        popup.getContent().add(label);
+
+        popup.show(((Node) event.getSource()).getScene().getWindow());
+
+        PauseTransition schowaj = new PauseTransition(Duration.seconds(2));
+        schowaj.setOnFinished(e -> {
+            popup.hide();
+        });
+
+        schowaj.play();
     }
 }

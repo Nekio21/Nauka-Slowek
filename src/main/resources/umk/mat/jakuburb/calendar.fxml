@@ -100,7 +100,6 @@
                                 <Label onMouseClicked="#kalendarzMenuAction" styleClass="zaznaczone" text="Kalendarz nauki" />
                                 <Label onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
                                 <Label onMouseClicked="#TrenerMenuAction" text="Trener" />
-                                <Label text="Draw it" />
                             </children>
                             <padding>
                                 <Insets bottom="30.0" top="30.0" />

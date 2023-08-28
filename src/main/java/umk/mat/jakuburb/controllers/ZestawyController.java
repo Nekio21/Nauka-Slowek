@@ -1,11 +1,19 @@
 package umk.mat.jakuburb.controllers;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -33,7 +41,15 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     @FXML
     private FlowPane flowPane;
 
+    @FXML
+    private Label findLabel;
+
+    @FXML
+    private TextField findZestawTF;
+
     public static String ZESTAW_KEY_ID = "Super ID zestaw ;/";
+
+    private String textFromTF = "";
 
     private String[] sortujList = new String[]{
             "Alfabetycznie",
@@ -48,14 +64,40 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     public void initialize(){
         super.initialize();
         sortujChoiceBox.getItems().addAll(sortujList);
+        sortujChoiceBox.setValue(sortujList[0]);
 
         flowPaneInit();
+
+        ZestawyController zestawyController = this;
+        findZestawTF.addEventHandler(KeyEvent.KEY_RELEASED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                MyDatabaseBox box = new MyDatabaseBox();
+
+                box.getArray()[0] = findZestawTF.getText();
+                box.getArray()[1] = sortujChoiceBox.getValue();
+
+                myDatabase.makeSession(box, zestawyController);
+            }
+        });
+
+        sortujChoiceBox.setOnAction(e->{
+            MyDatabaseBox box = new MyDatabaseBox();
+
+            box.getArray()[0] = findZestawTF.getText();
+            box.getArray()[1] = sortujChoiceBox.getValue();
+
+            myDatabase.makeSession(box, zestawyController);
+        });
     }
 
     public void flowPaneInit(){
+        MyDatabaseBox box = new MyDatabaseBox();
+        box.getArray()[1] = sortujChoiceBox.getValue();
+
         dataSender = DataSender.initDataSender();
         myDatabase = MyDatabase.createDatabase();
-        myDatabase.makeSession(this);
+        myDatabase.makeSession(box, this);
     }
 
     @FXML
@@ -67,9 +109,46 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     @Override
     public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
         User user = (User)dataSender.get(LoginController.PW_KEY_ID);
+        Query<ZestawySlowek> zestawySlowekQuery;
 
-        Query<ZestawySlowek> zestawySlowekQuery = session.createQuery("SELECT u.zestawySlowek From User u where u.id = :id", ZestawySlowek.class);
+        String textUser = (String)myDatabaseBox.getArray()[0];
+        String choiceType = (String)myDatabaseBox.getArray()[1];
+
+        String query = "FROM ZestawySlowek z WHERE z in (SELECT u.zestawySlowek From User u WHERE u.id = :id) AND z.name LIKE :text";
+
+        if(textUser == null){
+            textUser = "";
+        }
+
+        if(choiceType != null){
+            if(choiceType.equals(sortujList[0])){
+                query += " ORDER BY z.name ASC";
+            }
+            else if(choiceType.equals(sortujList[1])){
+                query += " ORDER BY z.name DESC";
+            }
+            else if(choiceType.equals(sortujList[2])){
+                query += " ORDER BY z.dataStworzenia ASC";
+            }
+            else if(choiceType.equals(sortujList[3])){
+                query += " ORDER BY z.dataStworzenia DESC";
+            }
+            else if(choiceType.equals(sortujList[4])){
+                query += " ORDER BY z.procentObecnejZnajomosci ASC";
+            }
+            else if(choiceType.equals(sortujList[5])){
+                query += " ORDER BY z.procentObecnejZnajomosci DESC";
+            }
+        }
+
+        zestawySlowekQuery = session.createQuery(query, ZestawySlowek.class);
+
+
+        //zestawySlowekQuery = session.createQuery("From ZestawSlowek z WHERE :user IN z.uzytkownicy.id", ZestawySlowek.class);
+
         zestawySlowekQuery.setParameter("id", user.getId());
+        zestawySlowekQuery.setParameter("text", "%" + textUser + "%");
+
 
         List<ZestawySlowek> list = zestawySlowekQuery.getResultList();
 
@@ -82,6 +161,12 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
         List<ZestawySlowek> list = (List<ZestawySlowek>) wynik;
 
         user.setZestawySlowek(list);
+
+        Label l = (Label)flowPane.getChildren().get(0);
+        flowPane.getChildren().clear();
+        flowPane.getChildren().add(l);
+
+        findLabel.setText("Znaleziono: " + list.size() + " zestawy");
 
         for(ZestawySlowek z: list){
             VBox vbox = new VBox();
@@ -108,10 +193,10 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
 
             Label down = new Label();
 
-            if(z.getPunkty() == null){
+            if(z.getProcentObecnejZnajomosci() == null){
                 down.setText("0");
             }else{
-                down.setText(z.getPunkty().toString());
+                down.setText("Procent znajomosci: " + z.getProcentObecnejZnajomosci() + "%");
             }
 
 

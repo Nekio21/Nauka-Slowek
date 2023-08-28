@@ -156,10 +156,7 @@ public class CalendarController extends MyController implements MyDatabaseInterf
             case NONE -> kalendarz.setDayValue(DayValue.GOOD);
             case GOOD -> kalendarz.setDayValue(DayValue.THE_BEST);
             case THE_BEST -> kalendarz.setDayValue(DayValue.BAD);
-            case BAD -> {
-                session.remove(kalendarz);
-                return null;
-            }
+            case BAD -> kalendarz.setDayValue(DayValue.NONE);
         }
 
         session.merge(kalendarz);
@@ -176,14 +173,8 @@ public class CalendarController extends MyController implements MyDatabaseInterf
                 "/" + myDatabaseBox.getArray()[1] +
                 "/" + myDatabaseBox.getArray()[2];
 
+        dayValue = kalendarz.getDayValue();
 
-
-
-        if(kalendarz == null){
-            dayValue = DayValue.NONE;
-        } else{
-            dayValue = kalendarz.getDayValue();
-        }
 
         wartoscDnia.put(key, kalendarz);
         pane.setStyle("-fx-background-color: #" + dayValue.getColorValue());

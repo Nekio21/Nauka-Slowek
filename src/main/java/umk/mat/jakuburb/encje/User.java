@@ -1,6 +1,7 @@
 package umk.mat.jakuburb.encje;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.ColumnTransformer;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class User {
     private String login;
 
     @Column(name = "haslo")
+    @ColumnTransformer(read = "pgp_sym_decrypt(haslo, 'tajnekey')", write = "pgp_sym_encrypt(?, 'tajnekey')")
     private String password;
 
     @Column(name = "image", columnDefinition="org.hibernate.type.BinaryType")

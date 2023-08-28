@@ -23,7 +23,7 @@
    <left>
       <BorderPane fx:id="menu" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <bottom>
-            <Label fx:id="logout" onMouseClicked="#logoutMenuAction"  text="Wyloguj mnie" BorderPane.alignment="CENTER">
+            <Label fx:id="logout" onMouseClicked="#logoutMenuAction" text="Wyloguj mnie" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding>
@@ -98,8 +98,7 @@
                         <Label onMouseClicked="#homeMenuAction" text="Strona główna" />
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label onMouseClicked="#zestawyMenuAction" styleClass="zaznaczone" text="Zestawy słówek" />
-                        <Label text="Trener" onMouseClicked="#TrenerMenuAction"/>
-                        <Label text="Draw it" />
+                        <Label onMouseClicked="#TrenerMenuAction" text="Trener" />
                      </children>
                      <padding>
                         <Insets bottom="30.0" top="30.0" />
@@ -121,12 +120,12 @@
          <children>
             <HBox fx:id="zestawy_hboTop" alignment="CENTER_LEFT" spacing="30.0">
                <children>
-                  <TextField focusTraversable="false" promptText="Wyszukuja zestawu :)" HBox.hgrow="ALWAYS">
+                  <TextField fx:id="findZestawTF" focusTraversable="false" promptText="Wyszukuja zestawu :)" HBox.hgrow="ALWAYS">
                      <padding>
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                      </padding>
                   </TextField>
-                  <Label alignment="CENTER_RIGHT" text="Znaleziono: 2 zestawy" />
+                  <Label fx:id="findLabel" alignment="CENTER_RIGHT" text="Znaleziono: 0 zestawy" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="30.0" top="10.0" />

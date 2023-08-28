@@ -96,7 +96,6 @@
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
                         <Label onMouseClicked="#TrenerMenuAction" styleClass="zaznaczone" text="Trener" />
-                        <Label text="Draw it" />
                      </children>
                      <padding>
                         <Insets bottom="30.0" top="30.0" />
@@ -122,9 +121,9 @@
                </VBox.margin>
             </Label>
             <Label fx:id="spis_trener" maxHeight="-Infinity" maxWidth="500.0" text="Twój trener przygotował dla Ciebie nowy trening dla słowek, który czas najwyższy powtórzyć :) Regularne powtarzenie słówek w odpowiednich przerwach pozwala na dłuuuugie zapamietanie nich. Dzieki Trenorowi czas działa tylko na twoja kożysc. Nie pozostaje mi nic innego jak życzyc udaj nauki :)" textAlignment="JUSTIFY" wrapText="true" />
-            <Label fx:id="przyciskTrener" text="Rozpocznij juz teraz" />
+            <Label fx:id="przyciskTrener" onMouseClicked="#zagraj" text="Rozpocznij juz teraz" />
             <Label fx:id="zestawTrener" text="twoj progres w zestawie &quot;jedzenie&quot;" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
+            <HBox fx:id="hboxTrener" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
                <children>
                   <VBox alignment="BOTTOM_CENTER" spacing="10.0">
                      <children>

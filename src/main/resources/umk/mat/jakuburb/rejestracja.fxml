@@ -11,7 +11,7 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0A2F35;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="umk.mat.jakuburb.controllers.RegisterController">
    <children>
-      <VBox fx:id="loginHBox" alignment="CENTER" spacing="70.0" style="-fx-background-color: #12492F;">
+      <VBox fx:id="loginHBox" alignment="CENTER" spacing="70.0" style="-fx-background-color: #12492F;" StackPane.alignment="CENTER">
          <children>
             <VBox alignment="CENTER" fillWidth="false" maxWidth="-Infinity" spacing="10.0">
                <children>
@@ -19,7 +19,7 @@
                   <Label fx:id="podtytol_login" text="Załuż konto i ciesz się nauką słówek jak nigdy" />
                </children>
             </VBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox maxWidth="750.0" prefHeight="100.0" prefWidth="200.0" spacing="40.0">
                <children>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" HBox.hgrow="ALWAYS">
                      <children>
@@ -30,9 +30,12 @@
                   </VBox>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fx:id="kolko" fill="#12472ec6" radius="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Label onMouseClicked="#chooseImage" text="Wybierz obraz" />
+                        <Circle fx:id="kolko" fill="#60d79dc7" radius="92.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Label fx:id="wybierzObraz" onMouseClicked="#chooseImage" text="Wybierz obraz" />
                      </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
                   </StackPane>
                </children>
             </HBox>

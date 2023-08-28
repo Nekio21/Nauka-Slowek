@@ -18,8 +18,10 @@ import umk.mat.jakuburb.usefullClass.DayValue;
 import umk.mat.jakuburb.usefullClass.GameModes;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class PlayController extends MyController implements MyDatabaseInterface {
@@ -50,7 +52,7 @@ public class PlayController extends MyController implements MyDatabaseInterface 
 
     @FXML
     private Label negativeLabel;
-    private ZestawySlowek zestawySlowek;
+    private List<Slowka> zestawySlowek;
     private List<Slowka> listaSlowek;
 
     private List<SlowkaGra> slowkaGraListToEndGame = new ArrayList<>();
@@ -78,8 +80,8 @@ public class PlayController extends MyController implements MyDatabaseInterface 
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.CALENDAR_GAME),this);
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.CREATE_GAME),this);
 
-        zestawySlowek = (ZestawySlowek) dataSender.get(EdytujZestawController.ZESTAW_TO_PLAY_KEY_ID);
-        listaSlowek = new ArrayList<>(zestawySlowek.getSlowka());
+        zestawySlowek = (List<Slowka>) dataSender.get(EdytujZestawController.ZESTAW_TO_PLAY_KEY_ID);
+        listaSlowek = new ArrayList<>(zestawySlowek);
 
         Collections.shuffle(listaSlowek);
 
@@ -231,9 +233,83 @@ public class PlayController extends MyController implements MyDatabaseInterface 
         }
 
         if(poprawnie){
+            Query<SlowkaGra> querySG = session.createQuery("FROM SlowkaGra sg WHERE sg.slowka = :slowko", SlowkaGra.class);
+            querySG.setParameter("slowko", slowka);
+
+            List<SlowkaGra> list = querySG.getResultList();
+
+            for(SlowkaGra s: list){
+                Gra g = s.getGra();
+                s.setGra(g);
+            }
+
+            LocalDateTime ldt = LocalDateTime.now();
+            boolean dobrze = false;
+
+            list = list.stream().sorted(new Comparator<SlowkaGra>() {
+                @Override
+                public int compare(SlowkaGra o1, SlowkaGra o2) {
+
+                    if(o1.getGra().getDataGry().isBefore(o2.getGra().getDataGry())){
+                        return -1;
+                    }
+
+                    return 1;
+                }
+            }).toList();
+
+            for(SlowkaGra s: list){
+                if(s.getDobrzeCzyZle() == false){
+                    ldt = s.getGra().getDataGry();
+                    dobrze = false;
+                    continue;
+                }
+                if(dobrze == false){
+                    ldt = s.getGra().getDataGry();
+                    dobrze = true;
+                }
+            }
+
+            if(dobrze == false){
+                slowka.setPunkty(1);
+            }
+            else{
+                Long diff = ChronoUnit.DAYS.between(ldt, LocalDateTime.now());
+
+                if(diff <= 1){
+                    punkty = 1;
+                }else if(diff <= 3){
+                    punkty = 3;
+                }else if(diff <= 7){
+                    punkty = 4;
+                }else if(diff <= 14){
+                    punkty = 7;
+                }else if(diff <= 30){
+                    punkty = 14;
+                }else if(diff <= 45){
+                    punkty = 25;
+                }else if(diff <= 60){
+                    punkty = 31;
+                }else if(diff <= 90){
+                    punkty = 45;
+                }else if(diff <= 120){
+                    punkty = 60;
+                }else if(diff <= 180){
+                    punkty = 90;
+                }else if(diff <= 200){
+                    punkty = 100;
+                }else if(diff <= 400){
+                    punkty = 250;
+                }else if(diff <= 700){
+                    punkty = 300;
+                }else{
+                    punkty = 600;
+                }
+
+                slowka.setPunkty(punkty);
+            }
+
             slowka.setDobreOdpowiedzi(slowka.getDobreOdpowiedzi() + 1);
-            //TODO: CHWILOOOOWE TYLKO NARAZIE TAKIE COS
-            slowka.setPunkty(3);
             slowka.setOstatniaOdpowiedzDobra(true);
         }else{
             slowka.setZleOdpowiedzi(slowka.getZleOdpowiedzi() + 1);

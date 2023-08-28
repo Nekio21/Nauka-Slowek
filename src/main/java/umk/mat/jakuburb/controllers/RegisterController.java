@@ -1,6 +1,10 @@
 package umk.mat.jakuburb.controllers;
 
+import javafx.animation.PauseTransition;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -8,8 +12,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import umk.mat.jakuburb.controllers.helpers.MyControllerSimple;
 import umk.mat.jakuburb.database.MyDatabase;
 import umk.mat.jakuburb.database.MyDatabaseBox;
@@ -34,6 +41,9 @@ public class RegisterController extends MyControllerSimple implements MyDatabase
     @FXML
     private Circle kolko;
 
+    @FXML
+    private Label wybierzObraz;
+
     private MyDatabase myDatabase;
     private File image;
 
@@ -52,8 +62,11 @@ public class RegisterController extends MyControllerSimple implements MyDatabase
     public void registerMethod(MouseEvent mouseEvent){
         myDatabase = MyDatabase.createDatabase();
 
-        if(!(loginTF.getText().equals("") || hasloTF.getText().equals(""))) {
-            myDatabase.makeSession(this);
+        if(!(loginTF.getText().equals("") || hasloTF.getText().equals("")) && (hasloTF.getText().equals(hasloTwiceTF.getText()))) {
+
+            myDatabase.makeSession(new MyDatabaseBox(mouseEvent),this);
+        }else{
+            popup("Zle wpisane Dane :<",mouseEvent);
         }
     }
 
@@ -73,6 +86,7 @@ public class RegisterController extends MyControllerSimple implements MyDatabase
             try {
                 ImagePattern imagePattern = new ImagePattern(new Image(new FileInputStream(image)));
                 kolko.setFill(imagePattern);
+                wybierzObraz.setVisible(false);
             } catch (FileNotFoundException e) {
                 System.out.println("Blad :( FNFE: " + e);
             } catch (Exception e){
@@ -85,6 +99,15 @@ public class RegisterController extends MyControllerSimple implements MyDatabase
 
     @Override
     public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
+        Query<Long> iloscQuery = session.createQuery("SELECT COUNT(*) From User where login = :l", Long.class);
+        iloscQuery.setParameter("l", loginTF.getText());
+
+        long wynik = iloscQuery.getSingleResult();
+
+        if(wynik > 0){
+            return false;
+        }
+
         user = new User();
 
         user.setLogin(loginTF.getText());
@@ -107,6 +130,14 @@ public class RegisterController extends MyControllerSimple implements MyDatabase
 
     @Override
     public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
+        Boolean result = (Boolean) wynik;
 
+        if(result == false) {
+            popup("Taki User juz istnieje :<", myDatabaseBox.getEvent());
+        }else{
+            popup("Konto założone", myDatabaseBox.getEvent());
+        }
     }
+
+
 }

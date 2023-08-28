@@ -42,7 +42,7 @@ public class Slowka {
     @Column(name = "ostatniagra")
     private LocalDateTime ostatniaGra;
 
-    @OneToMany(mappedBy = "slowka", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "slowka",cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<SlowkaGra> slowkaGraList = new ArrayList<>();
 
     @Column(name = "ostatniaodpowiedzdobra")

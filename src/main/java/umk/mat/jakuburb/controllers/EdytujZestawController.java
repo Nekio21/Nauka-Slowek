@@ -169,7 +169,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     @FXML
     public void playMethod(MouseEvent mouseEvent){
         dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
-        dataSender.add(zestaw, ZESTAW_TO_PLAY_KEY_ID);
+        dataSender.add(zestaw.getSlowka(), ZESTAW_TO_PLAY_KEY_ID);
         change("gra.fxml", mouseEvent);
     }
 
