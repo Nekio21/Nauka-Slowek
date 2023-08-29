@@ -391,7 +391,7 @@
     -fx-font-size: 36px;
 }
 
-#spis_trener, #gratulacje_opis{
+#spis_trener, #gratulacjeOpis{
     -fx-text-fill: #12492F;
     -fx-font-size: 12px;
     -fx-font-weight: 200;

@@ -69,6 +69,8 @@ public class PlayController extends MyController implements MyDatabaseInterface 
     private int index = 0;
     private LocalDateTime localDateTime;
 
+    public static final String GRA = "adfasdf asdfasd fasdf asdf d";
+
     @FXML
     public void initialize(){
         super.initialize();
@@ -163,6 +165,7 @@ public class PlayController extends MyController implements MyDatabaseInterface 
 
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.END_GAME),this);
 
+        dataSender.add(gra, GRA);
         change("wynik.fxml", me);
     }
 

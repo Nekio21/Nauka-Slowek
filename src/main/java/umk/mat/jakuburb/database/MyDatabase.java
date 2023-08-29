@@ -73,13 +73,23 @@ public class MyDatabase implements Runnable{
     public void makeSession(MyDatabaseBox myDatabaseBox, MyDatabaseInterface myDatabaseInterface){
         Session session = sessionFactory.getCurrentSession();
 
-        session.beginTransaction();
+        try {
+            session.beginTransaction();
 
-        Object wynik = myDatabaseInterface.inside(myDatabaseBox, session);
+            Object wynik = myDatabaseInterface.inside(myDatabaseBox, session);
 
-        session.getTransaction().commit();
+            session.getTransaction().commit();
 
-        myDatabaseInterface.after(myDatabaseBox, wynik);
+            myDatabaseInterface.after(myDatabaseBox, wynik);
+        }catch(Exception e){
+            try{
+                session.getTransaction().commit();
+                System.out.println("Cos poszlo nie tak :<   " + e);
+            }catch(Exception ef){
+                System.out.println("eeeee :<   " + ef);
+            }
+
+        }
     }
 
     public void stopDatabase(){

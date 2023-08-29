@@ -81,8 +81,8 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
 
     private final String zestawyQuery = "SELECT u.zestawySlowek From User u where u.id = :id";
     private final String losoweSlowkoQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.login = :name order by random() limit 1";
-    private final String najtrudniejszeSlowkaQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.id = :id order by zleOdpowiedzi limit 3";
-    private final String najlatwiejszeSlowkaQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.id = :id order by dobreOdpowiedzi limit 3";
+    private final String najtrudniejszeSlowkaQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.id = :id order by s.punkty ASC limit 3";
+    private final String najlatwiejszeSlowkaQuery = "From Slowka s JOIN s.zestawySlowek z JOIN z.uzytkownicy u where u.id = :id order by s.punkty DESC limit 3";
     private User user;
     private int procent;
 
