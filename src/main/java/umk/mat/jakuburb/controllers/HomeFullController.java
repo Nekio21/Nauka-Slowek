@@ -204,7 +204,7 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
         List<ZestawySlowek> z = user.getZestawySlowek();
 
         for(ZestawySlowek zestawySlowek: z){
-            Query<HistoriaZestawu> query = session.createQuery("From HistoriaZestawu h WHERE h.zestawySlowek = :zes", HistoriaZestawu.class);
+            Query<HistoriaZestawu> query = session.createQuery("From HistoriaZestawu h WHERE h.zestawySlowek = :zes ORDER BY h.dataGry", HistoriaZestawu.class);
             query.setParameter("zes", zestawySlowek);
 
             zestawySlowek.setHistoriaZestawuList(query.getResultList());
@@ -396,7 +396,8 @@ public class HomeFullController extends MyController implements MyDatabaseInterf
                 int year = theBestHistory.get(indexTab[i]).getDataGry().getYear();
 
                 ((Label)((VBox) v).getChildren().get(0)).setText(theBestHistory.get(indexTab[i]).getProcentZnajmosci() + "%");
-                ((Pane)((VBox) v).getChildren().get(1)).setMinHeight(4 * theBestHistory.get(indexTab[i]).getProcentZnajmosci());
+                ((Pane)((VBox) v).getChildren().get(1)).setMinHeight(3 * theBestHistory.get(indexTab[i]).getProcentZnajmosci());
+                ((Pane)((VBox) v).getChildren().get(1)).setMaxHeight(3 * theBestHistory.get(indexTab[i]).getProcentZnajmosci());
                 ((Label)((VBox) v).getChildren().get(2)).setText("Poziom wiedzy z " +  dnien + "." + miesiac + "." + year);
 
                 i++;

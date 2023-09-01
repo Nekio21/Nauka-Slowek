@@ -57,21 +57,27 @@ public class MyDatabase implements Runnable{
     }
 
     public void makeSession(MyDatabaseInterface myDatabaseInterface){
-        Session session = sessionFactory.getCurrentSession();
-        MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
-        myDatabaseBox.setStany(StanyDatabase.NULL);
-
-        session.beginTransaction();
-
-        Object wynik = myDatabaseInterface.inside(myDatabaseBox, session);
-
-        session.getTransaction().commit();
-
-        myDatabaseInterface.after(myDatabaseBox, wynik);
+//        Session session = sessionFactory.getCurrentSession();
+//        MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
+//        myDatabaseBox.setStany(StanyDatabase.NULL);
+//
+//        session.beginTransaction();
+//
+//        Object wynik = myDatabaseInterface.inside(myDatabaseBox, session);
+//
+//        session.getTransaction().commit();
+//
+//        myDatabaseInterface.after(myDatabaseBox, wynik);
+        makeSession(null, myDatabaseInterface);
     }
 
     public void makeSession(MyDatabaseBox myDatabaseBox, MyDatabaseInterface myDatabaseInterface){
         Session session = sessionFactory.getCurrentSession();
+
+        if(myDatabaseBox == null){
+            myDatabaseBox = new MyDatabaseBox();
+            myDatabaseBox.setStany(StanyDatabase.NULL);
+        }
 
         try {
             session.beginTransaction();
@@ -84,9 +90,14 @@ public class MyDatabase implements Runnable{
         }catch(Exception e){
             try{
                 session.getTransaction().commit();
-                System.out.println("Cos poszlo nie tak :<   " + e);
+
+                if(myDatabaseBox.isSafe()){
+                    myDatabaseBox.setSafe(false);
+                    makeSession(myDatabaseBox, myDatabaseInterface);
+                }
+
             }catch(Exception ef){
-                System.out.println("eeeee :<   " + ef);
+                System.out.println("Cos nie działa");
             }
 
         }

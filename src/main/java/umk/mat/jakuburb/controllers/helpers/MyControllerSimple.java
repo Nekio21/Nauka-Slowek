@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -59,13 +60,21 @@ public class MyControllerSimple {
 
         popup.getContent().add(label);
 
-        popup.show(((Node) event.getSource()).getScene().getWindow());
+        if(event == null){
+            popup.show(new Stage());
+        } else {
+            popup.show(((Node) event.getSource()).getScene().getWindow());
+        }
 
-        PauseTransition schowaj = new PauseTransition(Duration.seconds(2));
+        PauseTransition schowaj = new PauseTransition(Duration.seconds(4));
         schowaj.setOnFinished(e -> {
             popup.hide();
         });
 
         schowaj.play();
+    }
+
+    protected void popup(String info){
+        popup(info, null);
     }
 }

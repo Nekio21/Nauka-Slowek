@@ -62,7 +62,9 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     private List<Slowka> slowkaList = new ArrayList<>();
     private ZestawySlowek zestaw;
     private Slowka selectedSlowko;
-    private int selectedSlowkoId;
+    private int selectedSlowkoId = -1;
+
+    private final String QUERY_SLOWKA = "FROM Slowka s Where s.zestawySlowek.id = :iid Order by s.id";
 
     //TODO: DODANIE MOZLIWOSCI EDYCJI TABELI
     //TODO: DODANIE MOZLIWOSCI UWUWWANIA ZESTAWU
@@ -89,6 +91,18 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         labelAktualizuj.managedProperty().bind(labelAktualizuj.visibleProperty());
         labelDelete.managedProperty().bind(labelDelete.visibleProperty());
         labelFlip.managedProperty().bind(labelFlip.visibleProperty());
+
+        slowkoStronaB.setOnAction(e->{
+            if(selectedSlowkoId == -1){
+                dodaj();
+            }
+        });
+
+        slowkoStronaA.setOnAction(e->{
+            if(selectedSlowkoId == -1){
+                dodaj();
+            }
+        });
 
         if(zestaw == null){
             edytujZestawDelete.setVisible(false);
@@ -169,8 +183,12 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     @FXML
     public void playMethod(MouseEvent mouseEvent){
         dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
-        dataSender.add(zestaw.getSlowka(), ZESTAW_TO_PLAY_KEY_ID);
-        change("gra.fxml", mouseEvent);
+        if(zestaw.getSlowka().size() > 0) {
+            dataSender.add(zestaw.getSlowka(), ZESTAW_TO_PLAY_KEY_ID);
+            change("gra.fxml", mouseEvent);
+        }else{
+            popup("Nie ma słowek do gry");
+        }
     }
 
     @FXML
@@ -185,6 +203,10 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
     @FXML
     public void addMethod(MouseEvent mouseEvent){
+        dodaj();
+    }
+
+    private void dodaj(){
         myDatabase = MyDatabase.createDatabase();
 
         MyDatabaseBox myDatabaseBox = new MyDatabaseBox();
@@ -239,7 +261,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     }
 
     private Object odczytSlowkaInside(MyDatabaseBox myDatabaseBox, Session session){
-        Query<Slowka> q = session.createQuery("FROM Slowka s Where s.zestawySlowek.id = :iid", Slowka.class);
+        Query<Slowka> q = session.createQuery(QUERY_SLOWKA, Slowka.class);
         q.setParameter("iid", zestaw.getId());
 
         List<Slowka> slowka = q.getResultList();
@@ -273,11 +295,21 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         newSlowko.setDobreOdpowiedzi(0);
         newSlowko.setZleOdpowiedzi(0);
 
+        newSlowko.setPunkty(0);
+
         if(zestaw != null) {
             newSlowko.setIdZestawu(zestaw);
         }
 
         session.persist(newSlowko);
+
+        if(zestaw != null) {
+            Query<Slowka> q = session.createQuery(QUERY_SLOWKA, Slowka.class);
+            q.setParameter("iid", zestaw.getId());
+
+            List<Slowka> slowka = q.getResultList();
+            zestaw.setSlowka(slowka);
+        }
 
         return newSlowko;
     }
@@ -288,6 +320,9 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
         table.getItems().add(slowka);
         slowkaList.add(slowka);
         licznik.setText("Ilość słowek: " + slowkaList.size());
+        slowkoStronaA.setText("");
+        slowkoStronaB.setText("");
+        slowkoStronaA.requestFocus();
     }
 
     private Object usunZestawInside(MyDatabaseBox myDatabaseBox, Session session) {
@@ -342,6 +377,14 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
         session.merge(selectedSlowko);
 
+        if(zestaw != null) {
+            Query<Slowka> q = session.createQuery(QUERY_SLOWKA, Slowka.class);
+            q.setParameter("iid", zestaw.getId());
+
+            List<Slowka> slowka = q.getResultList();
+            zestaw.setSlowka(slowka);
+        }
+
         return selectedSlowko;
     }
 
@@ -368,6 +411,12 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
 
         if(zestaw != null){
             zestaw.getSlowka().remove(selectedSlowko);
+
+            Query<Slowka> q = session.createQuery(QUERY_SLOWKA, Slowka.class);
+            q.setParameter("iid", zestaw.getId());
+
+            List<Slowka> slowka = q.getResultList();
+            zestaw.setSlowka(slowka);
         }
 
         return selectedSlowko;

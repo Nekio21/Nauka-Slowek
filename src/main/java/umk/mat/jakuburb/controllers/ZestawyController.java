@@ -194,7 +194,7 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
             Label down = new Label();
 
             if(z.getProcentObecnejZnajomosci() == null){
-                down.setText("0");
+                down.setText("Procent znajomosci: " + 0 + "%");
             }else{
                 down.setText("Procent znajomosci: " + z.getProcentObecnejZnajomosci() + "%");
             }

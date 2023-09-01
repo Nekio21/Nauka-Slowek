@@ -136,7 +136,7 @@
                   <VBox alignment="CENTER" spacing="20.0">
                      <children>
                         <Label fx:id="apwzz" styleClass="data_trener2" text="Aktualny poziom wiedzy z zestawów to 88%" />
-                        <Label fx:id="przyciskTrener" onMouseClicked="#goToTrenerMethod" text="Zwiekszy go teraz z Trenerem :)" />
+                        <Label fx:id="przyciskTrener" onMouseClicked="#goToTrenerMethod" text="Zwieksz go teraz z Trenerem :)" />
                      </children>
                   </VBox>
                   <StackPane maxHeight="-Infinity" minHeight="400.0" minWidth="0.0" prefHeight="400.0" VBox.vgrow="ALWAYS">

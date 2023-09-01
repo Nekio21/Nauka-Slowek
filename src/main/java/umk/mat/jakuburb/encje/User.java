@@ -30,7 +30,7 @@ public class User {
     @Column(name="logowaniedate")
     private LocalDateTime logowanieDate;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "UserZestawy",
             joinColumns = @JoinColumn(name = "idowner"),

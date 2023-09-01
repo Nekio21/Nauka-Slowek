@@ -14,7 +14,7 @@
             <VBox fillWidth="false" maxWidth="-Infinity" spacing="10.0">
                <children>
                   <Label fx:id="tytul_login" text="The Master program" />
-                  <Label fx:id="podtytol_login" text="Zaloguj się i zacznij kożystać z najlepszej applikacji do nauki słowek :)" />
+                  <Label fx:id="podtytol_login" text="Zaloguj się i zacznij korzystać z najlepszej aplikacji do nauki słówek :)" />
                </children>
                <padding>
                   <Insets left="100.0" />
@@ -32,7 +32,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </VBox>
-      <Label fx:id="zajestroj_login" onMouseClicked="#registerMethod" text="Zarejstruj sie" StackPane.alignment="TOP_RIGHT">
+      <Label fx:id="zajestroj_login" onMouseClicked="#registerMethod" text="Zarejestruj się" StackPane.alignment="TOP_RIGHT">
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>

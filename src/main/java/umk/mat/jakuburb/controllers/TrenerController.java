@@ -1,5 +1,6 @@
 package umk.mat.jakuburb.controllers;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -39,11 +40,15 @@ public class TrenerController extends MyController implements MyDatabaseInterfac
 
     private User user;
 
+    private boolean moznaGra = true;
+
     @FXML
     public void initialize(){
         super.initialize();
 
         user = (User)dataSender.get(LoginController.PW_KEY_ID);
+
+        titleTrener.setText("Witaj " + user.getLogin());
 
         myDatabase = MyDatabase.createDatabase();
         myDatabase.makeSession(this);
@@ -51,21 +56,34 @@ public class TrenerController extends MyController implements MyDatabaseInterfac
 
     @FXML
     public void zagraj(MouseEvent mouseEvent){
-        dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
-        dataSender.add(slowkaList, EdytujZestawController.ZESTAW_TO_PLAY_KEY_ID);
-        change("gra.fxml", mouseEvent);
+        if(moznaGra) {
+            dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
+            dataSender.add(slowkaList, EdytujZestawController.ZESTAW_TO_PLAY_KEY_ID);
+            change("gra.fxml", mouseEvent);
+        }else{
+            popup("Brak zestawów dla trenera :<");
+        }
     }
 
     @Override
     public Object inside(MyDatabaseBox myDatabaseBox, Session session) {
-        List<ZestawySlowek> z = user.getZestawySlowek();
+        Query<ZestawySlowek> queryZestaw = session.createQuery("SELECT u.zestawySlowek From User u WHERE u.id = :id", ZestawySlowek.class);
+        queryZestaw.setParameter("id", user.getId());
+        List<ZestawySlowek> z = queryZestaw.getResultList();
+
+        if(z.isEmpty()){
+            user.setZestawySlowek(z);
+            return null;
+        }else{
+            user.setZestawySlowek(z);
+        }
 
         Query<Slowka> querySlowka = session.createQuery("From Slowka s WHERE s.zestawySlowek IN :zez ORDER BY s.punkty ASC LIMIT 30", Slowka.class);
         querySlowka.setParameter("zez", z);
         slowkaList = querySlowka.getResultList();
 
         for(ZestawySlowek zestawySlowek: z){
-            Query<HistoriaZestawu> query = session.createQuery("From HistoriaZestawu h WHERE h.zestawySlowek = :zes", HistoriaZestawu.class);
+            Query<HistoriaZestawu> query = session.createQuery("From HistoriaZestawu h WHERE h.zestawySlowek = :zes  ORDER BY h.dataGry", HistoriaZestawu.class);
             query.setParameter("zes", zestawySlowek);
 
             zestawySlowek.setHistoriaZestawuList(query.getResultList());
@@ -76,6 +94,13 @@ public class TrenerController extends MyController implements MyDatabaseInterfac
 
     @Override
     public void after(MyDatabaseBox myDatabaseBox, Object wynik) {
+
+        if(wynik == null){
+            popup("Brak zestawów dla trenera :<");
+            nieRysujWykres();
+            return;
+        }
+
         List<ZestawySlowek> zestawySlowekList = (List<ZestawySlowek>) wynik;
 
         Collections.shuffle(zestawySlowekList);

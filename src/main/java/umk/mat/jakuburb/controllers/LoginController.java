@@ -100,7 +100,7 @@ public class LoginController extends MyControllerSimple implements MyDatabaseInt
             dataSender.add(result, PW_KEY_ID);
             HomeWaiter.checkDishes(result.getId(), myDatabaseBox.getEvent());
         }else{
-            popup("Nie udało się zalogować :<",myDatabaseBox.getEvent() );
+            popup("Hasło/Login niepoprawny lub brak rejestracji",myDatabaseBox.getEvent());
         }
     }
 }

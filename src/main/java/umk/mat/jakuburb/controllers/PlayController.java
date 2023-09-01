@@ -133,12 +133,12 @@ public class PlayController extends MyController implements MyDatabaseInterface 
         myDatabase.makeSession(box,this);
 
         resultLabel.setVisible(true);
-        checkGra.setText("Next");
+        checkGra.setText("Nastepny");
 
         index++;
 
         rundaLabel.setText((index + 1) + " Runda");
-        procentLabel.setText("Twoja skutecznosc: " + Math.round((poprawne*100)/(double)(poprawne+negatywne)) + "%");
+        procentLabel.setText("Twoja skuteczność: " + Math.round((poprawne*100)/(double)(poprawne+negatywne)) + "%");
         goodLabel.setText(poprawne + " poprawnych odpowiedzi");
         negativeLabel.setText(negatywne + " złych odpowiedzi");
 
@@ -155,7 +155,7 @@ public class PlayController extends MyController implements MyDatabaseInterface 
 
 
         resultLabel.setVisible(false);
-        checkGra.setText("Check");
+        checkGra.setText("Sprawdź");
 
         slowko_gra.setText(listaSlowek.get(index).getTextA());
     }

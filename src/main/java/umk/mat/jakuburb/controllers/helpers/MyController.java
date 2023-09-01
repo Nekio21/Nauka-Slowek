@@ -12,6 +12,10 @@ import umk.mat.jakuburb.database.MyDatabase;
 import umk.mat.jakuburb.encje.User;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.net.URL;
 
 public abstract class MyController extends MyControllerSimple {
 
@@ -40,11 +44,18 @@ public abstract class MyController extends MyControllerSimple {
         if(user.getImage() != null){
             Image image = new Image(new ByteArrayInputStream(user.getImage()));
             imagePattern = new ImagePattern(image);
+            profilowe.setFill(imagePattern);
         }else{
-            imagePattern = new ImagePattern(new Image("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuFrzBJjheuN79uOKBC4DlAgqX0yEpy55lmj0glMs9kCdQlK5sHcrcr2SH1s4ixlYSn50&usqp=CAU"));
+            try {
+                File file = new File("src/main/resources/umk/mat/jakuburb/assets/ttt.png");
+                imagePattern = new ImagePattern(new Image(new FileInputStream(file)));
+                profilowe.setFill(imagePattern);
+            } catch (Exception e) {
+                System.out.println("Nie udalo sie. e: " + e);
+            }
         }
 
-        profilowe.setFill(imagePattern);
+
 
         nickLabel.setText(user.getLogin());
     }

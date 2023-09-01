@@ -99,7 +99,6 @@
                         <Label fx:id="menuKalendarz" onMouseClicked="#kalendarzMenuAction" text="Kalendarz nauki" />
                         <Label fx:id="menuZestawy" onMouseClicked="#zestawyMenuAction" text="Zestawy słówek" />
                         <Label onMouseClicked="#TrenerMenuAction" text="Trener" />
-                        <Label text="Draw it" />
                      </children>
                      <padding>
                         <Insets bottom="30.0" top="30.0" />
@@ -137,7 +136,7 @@
                <children>
                   <Label fx:id="slowko_gra" maxHeight="90.0" text="Krowa je trawe regularnie w popoludowy dzien be zzadnego powodu. czemu ?? nie wiem :(" wrapText="true" />
                   <TextField fx:id="wpiszSlowkoGra" focusTraversable="false" promptText="Wpisz tutaj swoja odpowiedz :)" />
-                  <Label fx:id="checkGra" onMouseClicked="#checkMethod" text="sprawdz" />
+                  <Label fx:id="checkGra" onMouseClicked="#checkMethod" text="sprawdż" />
                </children>
             </VBox>
             <ProgressBar fx:id="bar" prefHeight="70.0" prefWidth="490.0" progress="0.46" StackPane.alignment="CENTER">
@@ -156,7 +155,7 @@
                      </VBox.margin>
                   </Label>
                   <Label fx:id="rundaLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="22 razy robione" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
-                  <Label fx:id="procentLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="Twoja skutecznosc: 23%" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                  <Label fx:id="procentLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="Twoja skuteczność: 23%" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
                   <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecny wynik gry" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
                      <VBox.margin>
                         <Insets top="30.0" />

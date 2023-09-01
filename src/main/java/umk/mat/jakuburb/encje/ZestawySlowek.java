@@ -30,7 +30,7 @@ public class ZestawySlowek {
     @Column(name = "datastworzenia")
     private LocalDateTime dataStworzenia;
 
-    @ManyToMany(mappedBy = "zestawySlowek")
+    @ManyToMany(mappedBy = "zestawySlowek", fetch = FetchType.EAGER)
     private List<User> uzytkownicy = new ArrayList<>();
 
     @OneToMany(mappedBy = "zestawySlowek", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
