@@ -48,6 +48,7 @@ public class ZestawyController extends MyController implements MyDatabaseInterfa
     private TextField findZestawTF;
 
     public static String ZESTAW_KEY_ID = "Super ID zestaw ;/";
+    public static String ZESTAW_TRYB = "ufksajljrejfisfduio234h9erp8fujfsduq0weujiofadjiolfas";
 
     private String textFromTF = "";
 

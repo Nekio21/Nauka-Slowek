@@ -6,8 +6,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
@@ -116,58 +116,117 @@
       </BorderPane>
    </left>
    <center>
-      <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #eee;" BorderPane.alignment="CENTER">
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <AnchorPane prefHeight="1000.0" prefWidth="1000.0" />
-            <ImageView fitHeight="278.0" fitWidth="443.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/fiszka4.png" />
-               </image>
-            </ImageView>
-            <Label fx:id="resultLabel" alignment="TOP_LEFT" text="Dobrze" visible="false" StackPane.alignment="TOP_LEFT">
-               <StackPane.margin>
-                  <Insets left="30.0" top="30.0" />
-               </StackPane.margin>
+            <StackPane fx:id="stackMainPanel" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #eee;">
+               <children>
+                  <ImageView fitHeight="333.0" fitWidth="421.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@assets/fiszka4.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="resultLabel" alignment="TOP_LEFT" text="Dobrze" visible="false" wrapText="true" StackPane.alignment="TOP_LEFT">
+                     <StackPane.margin>
+                        <Insets left="30.0" top="30.0" />
+                     </StackPane.margin>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </Label>
+                  <ProgressBar fx:id="bar" prefHeight="70.0" prefWidth="490.0" progress="0.46" StackPane.alignment="CENTER">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                     <StackPane.margin>
+                        <Insets top="400.0" />
+                     </StackPane.margin>
+                  </ProgressBar>
+                  <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" spacing="30.0">
+                     <children>
+                        <Label fx:id="slowko_gra" maxHeight="90.0" text="Krowa je trawe regularnie w popoludowy dzien be zzadnego powodu. czemu ?? nie wiem :(" wrapText="true" />
+                        <TextField fx:id="wpiszSlowkoGra" focusTraversable="false" promptText="Wpisz tutaj swoja odpowiedz :)" />
+                        <TextField fx:id="pzn1" promptText="przykladowe zdanie nr 1" />
+                        <TextField fx:id="pzn2" promptText="przykladowe zdanie nr 2" />
+                        <TextField fx:id="pzn3" promptText="przykladowe zdanie nr 3" />
+                        <Label fx:id="checkGra" onMouseClicked="#checkMethod" text="sprawdż" />
+                     </children>
+                  </VBox>
+                  <VBox fx:id="lista_gra" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="150.0" spacing="20.0" StackPane.alignment="TOP_RIGHT">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecne statystyki tej gry" textAlignment="CENTER" wrapText="true">
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="rundaLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="22 razy robione" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="procentLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="Twoja skuteczność: 23%" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecny wynik gry" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Label fx:id="goodLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_good" text="22 poprawne odpowiedzi" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="negativeLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_negative" text="23 negatywne odpowiedzi" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
+                     </children>
+                     <StackPane.margin>
+                        <Insets right="25.0" top="20.0" />
+                     </StackPane.margin>
+                  </VBox>
+               </children>
+            </StackPane>
+            <StackPane fx:id="DialoStackPanel" prefHeight="150.0" prefWidth="200.0" visible="false">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <Label text="Czas na Dialog Tryb - Mów na głos, tworzac historyjke">
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox spacing="30.0">
+                           <children>
+                              <Label fx:id="text1" alignment="CENTER" text="Tutaj jakis przykladowy text" wrapText="true" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="patrz1" text="Popatrz" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="30.0">
+                           <children>
+                              <Label fx:id="text2" alignment="CENTER" text="Tutaj jakis przykladowy text" wrapText="true" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="patrz2" text="Popatrz" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="30.0">
+                           <children>
+                              <Label fx:id="text3" alignment="CENTER" text="Tutaj jakis przykladowy text" wrapText="true" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="patrz3" text="Popatrz" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="30.0">
+                           <children>
+                              <Label fx:id="text4" alignment="CENTER" text="Tutaj jakis przykladowy text" wrapText="true" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="patrz4" text="Popatrz" />
+                           </children>
+                        </HBox>
+                        <HBox spacing="30.0">
+                           <children>
+                              <Label fx:id="text5" alignment="CENTER" text="Tutaj jakis przykladowy text" wrapText="true" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="patrz5" text="Popatrz" />
+                           </children>
+                        </HBox>
+                        <Label fx:id="przycisk2" onMouseClicked="#dalej2" text="Dalej">
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <Label fx:id="rund2" text="Runda 1" StackPane.alignment="TOP_RIGHT" />
+                  <Label fx:id="end2" onMouseClicked="#zakonczToWreszcie" text="Zakończ" visible="false" StackPane.alignment="TOP_LEFT" />
+               </children>
                <padding>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
-            </Label>
-            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="500.0" prefWidth="300.0" spacing="30.0">
-               <children>
-                  <Label fx:id="slowko_gra" maxHeight="90.0" text="Krowa je trawe regularnie w popoludowy dzien be zzadnego powodu. czemu ?? nie wiem :(" wrapText="true" />
-                  <TextField fx:id="wpiszSlowkoGra" focusTraversable="false" promptText="Wpisz tutaj swoja odpowiedz :)" />
-                  <Label fx:id="checkGra" onMouseClicked="#checkMethod" text="sprawdż" />
-               </children>
-            </VBox>
-            <ProgressBar fx:id="bar" prefHeight="70.0" prefWidth="490.0" progress="0.46" StackPane.alignment="CENTER">
-               <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-               </padding>
-               <StackPane.margin>
-                  <Insets top="400.0" />
-               </StackPane.margin>
-            </ProgressBar>
-            <VBox fx:id="lista_gra" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="150.0" spacing="20.0" StackPane.alignment="TOP_RIGHT">
-               <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecne statystyki tej gry" textAlignment="CENTER" wrapText="true">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="rundaLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="22 razy robione" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
-                  <Label fx:id="procentLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_normal" text="Twoja skuteczność: 23%" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" styleClass="statystyka_title" text="Obecny wynik gry" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS">
-                     <VBox.margin>
-                        <Insets top="30.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="goodLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_good" text="22 poprawne odpowiedzi" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
-                  <Label fx:id="negativeLabel" alignment="CENTER" contentDisplay="CENTER" styleClass="statytyka_negative" text="23 negatywne odpowiedzi" textAlignment="CENTER" wrapText="true" VBox.vgrow="ALWAYS" />
-               </children>
-               <StackPane.margin>
-                  <Insets right="25.0" top="20.0" />
-               </StackPane.margin>
-            </VBox>
+            </StackPane>
          </children>
       </StackPane>
    </center>

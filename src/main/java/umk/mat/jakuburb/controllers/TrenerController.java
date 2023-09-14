@@ -19,6 +19,7 @@ import umk.mat.jakuburb.encje.HistoriaZestawu;
 import umk.mat.jakuburb.encje.Slowka;
 import umk.mat.jakuburb.encje.User;
 import umk.mat.jakuburb.encje.ZestawySlowek;
+import umk.mat.jakuburb.usefullClass.GameModes;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -59,6 +60,7 @@ public class TrenerController extends MyController implements MyDatabaseInterfac
         if(moznaGra) {
             dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
             dataSender.add(slowkaList, EdytujZestawController.ZESTAW_TO_PLAY_KEY_ID);
+            dataSender.add(GameModes.ROZWINIETY, EdytujZestawController.TRYB_TO_PLAY_KEY_ID);
             change("gra.fxml", mouseEvent);
         }else{
             popup("Brak zestawów dla trenera :<");

@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.StackPane;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import umk.mat.jakuburb.controllers.helpers.DataSender;
@@ -19,15 +20,27 @@ import umk.mat.jakuburb.usefullClass.GameModes;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class PlayController extends MyController implements MyDatabaseInterface {
 
     @FXML
     private Label slowko_gra;
+
+    @FXML
+    private TextField pzn1;
+
+    @FXML
+    private TextField pzn2;
+
+    @FXML
+    private StackPane stackMainPanel;
+
+    @FXML
+    private StackPane DialoStackPanel;
+
+    @FXML
+    private TextField pzn3;
 
     @FXML
     private TextField wpiszSlowkoGra;
@@ -51,6 +64,42 @@ public class PlayController extends MyController implements MyDatabaseInterface 
     private Label goodLabel;
 
     @FXML
+    private Label text1;
+
+    @FXML
+    private Label text2;
+
+    @FXML
+    private Label text3;
+
+    @FXML
+    private Label text4;
+
+    @FXML
+    private Label text5;
+
+    @FXML
+    private Label patrz1;
+
+    @FXML
+    private Label patrz2;
+
+    @FXML
+    private Label patrz3;
+
+    @FXML
+    private Label patrz4;
+
+    @FXML
+    private Label patrz5;
+
+    @FXML
+    private Label rund2;
+
+    @FXML
+    private Label end2;
+
+    @FXML
     private Label negativeLabel;
     private List<Slowka> zestawySlowek;
     private List<Slowka> listaSlowek;
@@ -61,12 +110,16 @@ public class PlayController extends MyController implements MyDatabaseInterface 
     private User user;
     private Gra gra;
 
+    private GameModes gameMode;
+
     private boolean checked = false;
 
     private int poprawne = 0;
     private int negatywne = 0;
 
     private int index = 0;
+
+    private int runda2 = 1;
     private LocalDateTime localDateTime;
 
     public static final String GRA = "adfasdf asdfasd fasdf asdf d";
@@ -83,6 +136,12 @@ public class PlayController extends MyController implements MyDatabaseInterface 
         myDatabase.makeSession(new MyDatabaseBox(StanyDatabase.CREATE_GAME),this);
 
         zestawySlowek = (List<Slowka>) dataSender.get(EdytujZestawController.ZESTAW_TO_PLAY_KEY_ID);
+        gameMode = (GameModes) dataSender.get(EdytujZestawController.TRYB_TO_PLAY_KEY_ID);
+
+        if(gameMode == null){
+            gameMode = GameModes.ZWYKLY;
+        }
+
         listaSlowek = new ArrayList<>(zestawySlowek);
 
         Collections.shuffle(listaSlowek);
@@ -147,17 +206,88 @@ public class PlayController extends MyController implements MyDatabaseInterface 
 
     private void play(MouseEvent me){
         if(index >= listaSlowek.size()){
-            koniecGry(me);
+            if(gameMode == GameModes.ROZWINIETY){
+                dialogInit();
+            }else {
+                koniecGry(me);
+            }
             return;
         }
 
         wpiszSlowkoGra.setText("");
+
+        pzn1.setText("");
+        pzn2.setText("");
+        pzn3.setText("");
 
 
         resultLabel.setVisible(false);
         checkGra.setText("Sprawdź");
 
         slowko_gra.setText(listaSlowek.get(index).getTextA());
+    }
+
+    private void dialogInit(){
+        stackMainPanel.setVisible(false);
+        DialoStackPanel.setVisible(true);
+
+        runda2 = 1;
+
+        Collections.shuffle(listaSlowek);
+
+        dialogRund();
+    }
+
+    private int dialogRund(){
+        int size = listaSlowek.size();
+        int i = 0;
+
+        Random random = new Random();
+
+        int start = random.nextInt();
+
+        Label[] texts = {text1, text2, text3, text4, text5};
+        Label[] patrzs = {patrz1, patrz2, patrz3, patrz4, patrz5};
+        Boolean[] patrzStan = {false, false, false, false, false};
+
+        for(Label l: texts){
+            l.setText(listaSlowek.get((start+i)%size).getTextA());
+
+            int k = i;
+            patrzs[i].setOnMouseClicked(e->{
+                if(patrzStan[k] == false){
+                    l.setText(listaSlowek.get(k%size).getTextB());
+                    patrz1.setText("Showaj");
+
+                    patrzStan[k] = true;
+                }else{
+                    l.setText(listaSlowek.get(k%size).getTextA());
+                    patrz1.setText("Pokaż");
+
+                    patrzStan[k] = false;
+                }
+            });
+
+            i++;
+        }
+
+        return index;
+    }
+
+    @FXML
+    public void dalej2(MouseEvent ms){
+        rund2.setText("Runda " + ++runda2);
+
+        dialogRund();
+
+        if(runda2 > 3){
+            end2.setVisible(true);
+        }
+    }
+
+    @FXML
+    public void zakonczToWreszcie(MouseEvent ms){
+        koniecGry(ms);
     }
 
     private void koniecGry(MouseEvent me){

@@ -15,6 +15,7 @@ import umk.mat.jakuburb.database.StanyDatabase;
 import umk.mat.jakuburb.encje.Slowka;
 import umk.mat.jakuburb.encje.User;
 import umk.mat.jakuburb.encje.ZestawySlowek;
+import umk.mat.jakuburb.usefullClass.GameModes;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -58,6 +59,7 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     private Label labelAdd;
 
     public static final String ZESTAW_TO_PLAY_KEY_ID = "trooooooba";
+    public static final String TRYB_TO_PLAY_KEY_ID = "adsfasdfasdfasdfawefaserwqr23433";
 
     private List<Slowka> slowkaList = new ArrayList<>();
     private ZestawySlowek zestaw;
@@ -183,8 +185,12 @@ public class EdytujZestawController extends MyController implements MyDatabaseIn
     @FXML
     public void playMethod(MouseEvent mouseEvent){
         dataSender.add(null, ZestawyController.ZESTAW_KEY_ID);
+        dataSender.add(null, TRYB_TO_PLAY_KEY_ID);
+
         if(zestaw.getSlowka().size() > 0) {
             dataSender.add(zestaw.getSlowka(), ZESTAW_TO_PLAY_KEY_ID);
+            dataSender.add(GameModes.ZWYKLY, TRYB_TO_PLAY_KEY_ID);
+
             change("gra.fxml", mouseEvent);
         }else{
             popup("Nie ma słowek do gry");

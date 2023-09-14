@@ -1,4 +1,4 @@
-module NaukaSlowek {
+module umk.mat.jakuburb.NaukaSlowek {
     requires javafx.controls;
     requires javafx.graphics;
     requires javafx.fxml;
