@@ -67,8 +67,6 @@
                     <mainClass>umk.mat.jakuburb.Main</mainClass>
                 </configuration>
             </plugin>
-
-
         </plugins>
     </build>
 </project>

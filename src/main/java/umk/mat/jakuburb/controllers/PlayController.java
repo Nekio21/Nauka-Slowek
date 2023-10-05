@@ -177,6 +177,10 @@ public class PlayController extends MyController implements MyDatabaseInterface 
         } else{
             negatywne++;
             resultLabel.setText("Zle :( " + listaSlowek.get(index).getTextB());
+
+            //TODO: UWAGA TUTAJ ZMIANA
+            listaSlowek.add(listaSlowek.get(index));
+
             poprawnie = false;
         }
 
@@ -244,25 +248,24 @@ public class PlayController extends MyController implements MyDatabaseInterface 
 
         Random random = new Random();
 
-        int start = random.nextInt();
-
         Label[] texts = {text1, text2, text3, text4, text5};
         Label[] patrzs = {patrz1, patrz2, patrz3, patrz4, patrz5};
         Boolean[] patrzStan = {false, false, false, false, false};
 
         for(Label l: texts){
-            l.setText(listaSlowek.get((start+i)%size).getTextA());
+            int randomNext = random.nextInt(size);
+            l.setText(listaSlowek.get((5+randomNext)%size).getTextA());
 
             int k = i;
             patrzs[i].setOnMouseClicked(e->{
                 if(patrzStan[k] == false){
-                    l.setText(listaSlowek.get(k%size).getTextB());
-                    patrz1.setText("Showaj");
+                    l.setText(listaSlowek.get((5+randomNext)%size).getTextB());
+                    patrzs[k].setText("Showaj");
 
                     patrzStan[k] = true;
                 }else{
-                    l.setText(listaSlowek.get(k%size).getTextA());
-                    patrz1.setText("Pokaż");
+                    l.setText(listaSlowek.get((5+randomNext)%size).getTextA());
+                    patrzs[k].setText("Pokaż");
 
                     patrzStan[k] = false;
                 }
