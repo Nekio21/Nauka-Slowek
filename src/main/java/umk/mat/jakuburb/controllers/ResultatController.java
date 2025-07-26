@@ -46,28 +46,28 @@ public class ResultatController extends MyController implements MyDatabaseInterf
 
     private String[] beggin = new String[]{
             "Super, że kolejny raz ćwiczysz z naszym programem :) ",
-        "Nawet nie wiesz jakie przysługe robisz swojemu mózgowi na przyszłość !!! ",
-        "Kolejny krok za tobą, jesteś jak Amstron na księżycu, stawiasz krok za krokiem ku lepszej przyszłości BRAWO  ",
-        "Dobrze, że kolejny raz możemy się spotkać przy podsumowaniu. ",
-        "Nawet jesli Ci się nie wydaje to naprawde robisz olbrzymie postepy!!!! "
+            "Nawet nie wiesz, jakie przysługi robisz swojemu mózgowi na przyszłość!!! ",
+            "Kolejny krok za tobą, jesteś jak Armstrong na Księżycu, stawiasz krok za krokiem ku lepszej przyszłości. BRAWO!  ",
+            "Dobrze, że kolejny raz możemy się spotkać przy podsumowaniu. ",
+            "Nawet jeśli Ci się nie wydaje, to naprawdę robisz olbrzymie postępy!!!! "
     };
 
 
 
     private String[] end = new String[]{
-            "Trzymaj tak dalej i pamietaj, że wielki sukces to zasługa małych kroków :) ",
-            "Każdą próbe udana, mniej lub bardziej, zliżasz się do zywyciestwa ",
-            "Widzimy się na kolejny tescie ;) ",
-            "Tak trzymaj, widzimy się niedlugo... ",
-            "Robisz duże postepy, trzymaj tak dalej :) "
+            "Trzymaj tak dalej i pamiętaj, że wielki sukces to zasługa małych kroków :) ",
+            "Każdą próbę, udaną mniej lub bardziej, zbliżasz się do zwycięstwa. ",
+            "Widzimy się na kolejnym teście ;) ",
+            "Tak trzymaj, widzimy się niedługo... ",
+            "Robisz duże postępy, trzymaj tak dalej :) "
     };
 
     private String[] startTalkingAboutData = new String[]{
-            "Pozwól mi powiedzieć troszeczke o danych... ",
-            "A teraz przejdzmy do szczegółów twojej rozgrywki ",
-            "Jesli chodzi o twarde dane ",
+            "Pozwól mi powiedzieć troszeczkę o danych... ",
+            "A teraz przejdźmy do szczegółów Twojej rozgrywki. ",
+            "Jeśli chodzi o twarde dane, ",
             "Warto powiedzieć, że ",
-            "A teraz przyjżyjmy się bliżej danymi... "
+            "A teraz przyjrzyjmy się bliżej danym... "
     };
 
     @FXML
@@ -106,11 +106,11 @@ public class ResultatController extends MyController implements MyDatabaseInterf
 
         text += startTalkingAboutData[random.nextInt(5)];
 
-        text += "Ilość słowek, która brała udział w tescie to " + ilosc + ". ";
+        text += "Ilość słówek, które brały udział w teście, to " + ilosc + ". ";
         text += "Dobrych odpowiedzi było " + dobrych + ", natomiast złych " + zlych + ". ";
         text += "Grałeś w trybie " + info + ". ";
-        text += "A gre zaczołes " + data + ". ";
-        text += "Dzisiejszy wysiłek sprawił, że z słowek, które dzisiaj przerabiałeś masz łacznie " + punkty + " BRAWO. ";
+        text += "Grę zacząłeś " + data + ". ";
+        text += "Dzisiejszy wysiłek sprawił, że ze słówek, które przerabiałeś dzisiaj, masz łącznie " + punkty + ". BRAWO! ";
 
         return text;
     }
